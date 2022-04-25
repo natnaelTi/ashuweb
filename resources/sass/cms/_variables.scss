@@ -1,0 +1,216 @@
+.cms-info-cards {
+    margin-top: 2em !important;
+    margin-left: 2em !important;
+    margin-right: 2em !important;
+    position: relative;
+    justify-self: center;
+}
+
+.cms-ic-artworks {
+    background-image: linear-gradient(to bottom, rgba(101, 102, 107, 0.733), rgba(85, 7, 20, 0.89)),
+    url("../../../public/img/temp/info-cards/card-painting.jpg") !important;
+    width: 80% !important;
+    height: 220px !important;
+    background-size: cover !important;
+    color: white !important;
+    padding: 20px !important;
+}
+
+.cms-ic-photos {
+    background-image: linear-gradient(to bottom, rgba(77, 90, 153, 0.76), rgba(43, 10, 15, 0.89))
+    url("../../../public/img/temp/info-cards/card-photo.jpg") !important;
+    width: 80% !important;
+    height: 220px !important;
+    background-size: cover !important;
+    color: white !important;
+    padding: 20px !important;
+}
+
+.cms-ic-exhibitions {
+    background-image: linear-gradient(to bottom, rgba(184, 185, 192, 0.733), rgba(39, 28, 30, 0.87))
+    url("../../../public/img/temp/info-cards/card-exhibition.jpg") !important;
+    width: 80% !important;
+    height: 220px !important;
+    background-size: cover !important;
+    color: white !important;
+    padding: 20px !important;
+}
+
+.cms-info-cards h1 {
+    margin-top: 1px !important;
+    padding-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    font-weight: 800 !important;
+}
+
+.cms-info-cards h4 {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-weight: 400 !important;
+}
+
+.cms-info-cards .card-footer {
+    padding: 0 !important;
+    margin: 1px !important;
+}
+
+.cms-info-cards .card-footer a {
+    margin-right: 0 !important;
+    padding-right: 0 !important;
+    margin-bottom: 1px !important;
+    padding-bottom: 0 !important;
+    text-align: right !important;
+    position: relative !important;
+    float: right !important;
+    font-size: small !important;
+    color: rgb(236, 154, 148) !important;
+    text-decoration-line: none !important;
+    text-transform: uppercase !important;
+}
+
+.cms-info-cards .card-footer a:hover {
+    color: rgb(180, 24, 13) !important;
+    text-decoration-line: underline !important;
+}
+
+.cms-db-profile-card {
+    top: 2em !important;
+    margin: auto !important;
+    width: 93% !important;
+}
+
+.cms-db-profile-card .card-header {
+    background-color: rgb(245, 245, 245) !important;
+    border-bottom: 1px solid rgba(250, 250, 250, 0.575) !important;
+}
+
+.cms-db-profile-card .card-header h3 {
+    margin: 1.2em !important;
+    padding-bottom: 2px !important;
+    font-size: 24px !important;
+}
+
+.cms-db-profile-card .card-body .center {
+    margin: auto !important;
+    width: 60% !important;
+    padding: 10px !important;
+}
+
+.cms-db-profile-card .card-body .center img {
+    width: 260px !important;
+    height: 260px !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+    border: 2px solid rgb(36, 33, 33) !important;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px !important;
+}
+
+.cms-db-profile-card .card-body h3 {
+    text-align: center !important;
+    margin: auto !important;
+    padding: 1em !important;
+    font-weight: 800 !important;
+}
+
+.cms-db-profile-card .card-body .bio {
+    text-align: left !important;
+    width: 75% !important;
+    max-height: 300px !important;
+    margin-left: 1.2em !important;
+    display: block !important;
+    overflow: scroll !important;
+    text-overflow: ellipsis !important;
+}
+
+.cms-profile-card {
+    margin: auto !important;
+    height: inherit !important;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+.cms-profile-card .card-body .bio {
+    text-align: left !important;
+    width: 100% !important;
+    max-height: 300px !important;
+    padding: 10px !important;
+    display: block !important;
+    overflow: scroll !important;
+    text-overflow: ellipsis !important;
+}
+
+.cms-profile-card .card-body .center {
+    margin: auto !important;
+    width: 60% !important;
+    padding: 10px !important;
+    text-align: center !important;
+}
+.cms-profile-card .card-body .center h3 {
+    margin: auto !important;
+    width: 100% !important;
+    text-align: center !important;
+}
+
+.cms-profile-card .card-body .center img {
+    width: 90px !important;
+    height: 90px !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+    border: 1.5px solid rgb(36, 33, 33) !important;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px !important;
+}
+
+.cms-profile-alumni-list {
+    counter-reset: index !important;
+    padding: 0 !important;
+    min-width: 100% !important;
+}
+
+.cms-profile-alumni-list li {
+    counter-increment: index !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 10px 0 !important;
+    box-sizing: border-box !important;
+}
+
+.cms-profile-alumni-list li::before {
+    content: counters(index, ".", decimal-leading-zero) !important;
+    font-size: 1.5rem !important;
+    text-align: right !important;
+    font-weight: lighter !important;
+    min-width: 50px !important;
+    padding-right: 15px !important;
+    font-variant-numeric: tabular-nums !important;
+    align-self: flex-start !important;
+    background-image: linear-gradient(to bottom, rgb(158, 46, 46), rgb(30, 56, 95)) !important;
+    background-attachment: fixed !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+.cms-profile-alumni-list li + li {
+    border-top: 1px solid rgba(255,255,255,0.2) !important;
+}
+
+.cms-profile-exhibition table caption {
+	padding: .5em 0 !important;
+}
+
+.cms-profile-exhibition  table.dataTable th,
+.cms-profile-exhibition  table.dataTable td {
+  white-space: nowrap !important;
+}
+
+.cms-profile-exhibition .p {
+  text-align: center !important;
+  padding-top: 80px !important;
+  font-size: 8px !important;
+}
+
+.cms-artwork-list {
+    top: 2em !important;
+    margin: auto !important;
+    width: 93% !important;
+}

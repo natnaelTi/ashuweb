@@ -12,7 +12,9 @@ class Exhibition extends Model
     protected $fillable = [
         'title',
         'statement',
-        'year',
+        'start_date',
+        'end_date',
+        'location',
         'type',
         'description',
         'installation_views'

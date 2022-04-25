@@ -13,17 +13,17 @@
     <title>{{ __('Portal | Ashenafe Mestika') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/cms/app.js') }}" defer></script>
+    <script src="{{ asset('js/cms/cms.js') }}" defer></script>
 
     <!-- Fonts and Icons -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-    <link href="{{ asset('css/cms/pe-icon-7-stroke.css') }}" rel="stylesheet" />
+    <!-- <link href="{{ asset('css/cms/pe-icon-7-stroke.css') }}" rel="stylesheet" /> -->
 
     <!-- Styles -->
-    <link href="{{ asset('css/cms/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/cms/cms.css') }}" rel="stylesheet">
 
     <!-- Bootstrap core CSS     -->
     <link href="{{ asset('css/cms/bootstrap.min.css') }}" rel="stylesheet" />
@@ -91,7 +91,7 @@
                             <li>
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    <i class="pe-7s-sign-out"></i>
+                                    <i class="pe-7s-door-lock"></i>
                                     <p>Logout</p>
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"

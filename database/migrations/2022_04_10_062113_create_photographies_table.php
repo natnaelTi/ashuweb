@@ -15,7 +15,7 @@ class CreatePhotographiesTable extends Migration
     {
         Schema::create('photographies', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('exhibition_id');
+            $table->unsignedBigInteger('exhibition_id')->nullable()->default(1);
             $table->string('title');
             $table->year('year');
             $table->integer('ar_width');
@@ -25,6 +25,8 @@ class CreatePhotographiesTable extends Migration
             $table->integer('sh_speed')->nullable()->default(0);
             $table->string('filepath');
             $table->timestamps();
+
+            $table->foreign('exhibition_id')->references('id')->on('exhibitions')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

@@ -17,10 +17,12 @@ class CreateExhibitionsTable extends Migration
             $table->id();
             $table->string('title');
             $table->longText('statement');
-            $table->year('year');
+            $table->string('start_date');
+            $table->string('end_date');
+            $table->string('location');
             $table->enum('type', ['solo', 'group']);
-            $table->string('description');
-            $table->string('installation_views');
+            $table->string('description')->nullable()->default('NONE');
+            $table->string('installation_views')->nullable()->default('none.zip');
             $table->timestamps();
         });
     }
