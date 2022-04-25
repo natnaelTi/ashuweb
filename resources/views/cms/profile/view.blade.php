@@ -13,6 +13,9 @@
                             <div class="row text-center">
                                 <h3>{{ $artist->name }}</h3>
                                 <h5>Age: {{ $age }}</h5>
+                                <h6>
+                                    <a href="{{ route('edit_profile', 1) }}" class="btn btn-warning">Edit Profile</a>
+                                </h6>
                             </div>
                         </div>
                     </div>
@@ -105,7 +108,9 @@
                                                 <td>Some...</td>
                                                 <td>Some...</td>
                                                 <td>none</td>
-                                                <td>Edit</td>
+                                                <td>
+                                                    <a href="{{ route('edit_exhibition', 1) }}" class="btn btn-warning">Edit</a>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     @else
@@ -113,6 +118,9 @@
                                             <p class="text-center">No exhibitions have been recorded yet.</p>
                                         </tr>
                                     @endif
+                                    <tr>
+                                        <a class="btn btn-primary" href="{{ route('add_exhibition') }}">Add Exhibition</a>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

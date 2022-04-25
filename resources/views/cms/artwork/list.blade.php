@@ -48,7 +48,7 @@
                                                 <td>{{ $artwork->price }}USD</td>
                                                 <td>{{ $artwork->description }}</td>
                                                 <td>
-                                                    <a href="#" class="btn btn-warning">Edit</a>
+                                                    <a href="{{ route('edit_artwork', $artwork->id) }}" class="btn btn-warning">Edit</a>
                                                 </td>
                                             </tr>
                                         @endforeach

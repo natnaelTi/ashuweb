@@ -20,6 +20,7 @@ class PagesController extends Controller
     public function dashboard()
     {
         $artist = new User([
+            'id' => 1,
             'name' => "Ashenafe Mestika",
             'email' => "ashenafemestikaart@gmail.com",
             'dob' => Carbon::createFromFormat('Y-m-d', '1990-01-23'),
@@ -50,6 +51,7 @@ class PagesController extends Controller
     public function profile()
     {
         $artist = new User([
+            'id' => 1,
             'name' => "Ashenafe Mestika",
             'email' => "ashenafemestikaart@gmail.com",
             'dob' => Carbon::createFromFormat('Y-m-d', '1990-01-23'),
