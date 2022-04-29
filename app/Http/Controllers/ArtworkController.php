@@ -21,7 +21,7 @@ class ArtworkController extends Controller
             'height' => 'required|numeric',
             'type' => 'required|in:painting,drawing',
             'medium' => 'required|in:oil,acrylic,wood-cut,stensil-print,sculpture,mixed-media',
-            'year' => 'required|year',
+            'year' => 'required|numeric',
             'price' => 'required|numeric',
             'description' => 'string',
             'filepath' => 'required'
@@ -42,7 +42,7 @@ class ArtworkController extends Controller
         $artwork->filepath = $fp;
         $artwork->save();
 
-        return redirect()->route('list_artworks')->with('success', 'Artwork successfully created');
+        return redirect()->route('cms_artwork')->with('success', 'Artwork successfully created');
 
     }
 
@@ -63,7 +63,7 @@ class ArtworkController extends Controller
             'height' => 'required|numeric',
             'type' => 'required|in:painting,drawing',
             'medium' => 'required|in:oil,acrylic,wood-cut,stensil-print,sculpture,mixed-media',
-            'year' => 'required|year',
+            'year' => 'required|numeric',
             'price' => 'required|numeric',
             'description' => 'string',
             'filepath' => 'required'
@@ -84,7 +84,7 @@ class ArtworkController extends Controller
         $artwork->filepath = $fp;
         $artwork->save();
 
-        return redirect()->route('list_artworks')->with('success', 'Artwork successfully updated');
+        return redirect()->route('cms_artwork')->with('success', 'Artwork successfully updated');
     }
 
     public function destroy($id)

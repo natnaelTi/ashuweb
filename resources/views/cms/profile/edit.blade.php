@@ -6,7 +6,7 @@
                 <div class="card cms-artwork-list">
                     <div class="card-header">
                         <h4 class="my-4">
-                            @if (request()->routeIs('edit_profile') && isset($artist) && isset('$alumni'))
+                            @if (request()->routeIs('edit_profile') && isset($artist))
                                 Edit Artist Profile
                             @else
                                 Error
@@ -14,6 +14,20 @@
                         </h4>
                     </div>
                     <div class="card-body cms-profile-exhibition">
+                        @if (Session::get('success'))
+                            <div class="alert alert-success" role="alert">
+                                <i class="pe-7s-light"></i>
+                                <strong class="font-bold">Success!</strong>
+                                <span class="block sm:inline">{{Session::get('success')}}</span>
+                            </div>
+                        @endif
+                        @if (Session::get('error'))
+                            <div class="alert alert-danger" role="alert">
+                                <i class="pe-7s-light"></i>
+                                <strong class="font-bold">Error!</strong>
+                                <span class="block sm:inline">{{Session::get('error')}}</span>
+                            </div>
+                        @endif
                         <form method="post" name="profile_form" action="{{$route ?? route('store_profile')}}" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
@@ -41,6 +55,11 @@
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                 <label for="statement">Artist Statement</label>
                                     <textarea class="form-control" type="text" id="statement" name="statement" placeholder="Enter the current statement of the artist on his carrier and works" value="{{ old('statement') ?? $artist['statment'] ?? '' }}">{{ old('statement') ?? $artist['statement'] ?? '' }}</textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <button class="btn btn-primary" type="submit">Save</button>
                                 </div>
                             </div>
                         </form>

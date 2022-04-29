@@ -2,6 +2,20 @@
 @section('content')
     <div class="content">
         <div class="container-fluid">
+            @if (Session::get('success'))
+                <div class="alert alert-success" role="alert">
+                    <i class="pe-7s-light"></i>
+                    <strong class="font-bold">Success!</strong>
+                    <span class="block sm:inline">{{Session::get('success')}}</span>
+                </div>
+            @endif
+            @if (Session::get('error'))
+                <div class="alert alert-danger" role="alert">
+                <i class="pe-7s-light"></i>
+                    <strong class="font-bold">Error!</strong>
+                    <span class="block sm:inline">{{Session::get('error')}}</span>
+                </div>
+            @endif
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="card cms-info-cards cms-ic-artworks" id="cms-ic-artworks">

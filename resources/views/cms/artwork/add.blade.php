@@ -14,6 +14,20 @@
                         </h4>
                     </div>
                     <div class="card-body cms-profile-exhibition">
+                        @if (Session::get('success'))
+                            <div class="alert alert-success" role="alert">
+                                <i class="pe-7s-light"></i>
+                                <strong class="font-bold">Success!</strong>
+                                <span class="block sm:inline">{{Session::get('success')}}</span>
+                            </div>
+                        @endif
+                        @if (Session::get('error'))
+                            <div class="alert alert-danger" role="alert">
+                                <i class="pe-7s-light"></i>
+                                <strong class="font-bold">Error!</strong>
+                                <span class="block sm:inline">{{Session::get('error')}}</span>
+                            </div>
+                        @endif
                         <form method="post" name="artwork_form" action="{{$route ?? route('store_artwork')}}" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />

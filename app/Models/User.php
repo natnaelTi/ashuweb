@@ -25,7 +25,7 @@ class User extends Authenticatable
         'dob',
         'bio',
         'statement',
-        'profile_pic_path'
+        'filepath'
     ];
 
     /**
