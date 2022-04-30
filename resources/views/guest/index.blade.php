@@ -23,14 +23,25 @@
         <section id="about" class="about">
             <div class="container" data-aos="fade-up">
                 <div class="row">
-                    <div class="col-lg-4">
-                        <img src="assets/img/profile_img.jpg" class="img-fluid" alt="">
-                    </div>
-                    <div class="col pt-4 pt-lg-0 content">
+                    <div class="col-lg-5 col-sm-12 col-md-12 pt-4 pt-lg-0 content">
                         <h3>Bio in Brief </h3>
                         <p class="">
                             {{ $artist->bio }}
                         </p>
+                    </div>
+                    <div class="col-lg-7 col-sm-12 col-md-12 pt-4 pt-lg-0 content">
+                        <h5>Portfolio Exhibitions</h5>
+                        <table>
+                            <tbody>
+                                @foreach($exhibitions as $exhibition)
+                                    <tr class="my-3 py-5">
+                                        <td class="mx-5 px-3">{{ $exhibition->title }}</td>
+                                        <td class="mx-5 px-3">{{ \Carbon\Carbon::parse($exhibition->end_date)->format('Y') }}</td>
+                                        <td class="mx-5 px-3">{{ $exhibition->location }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -44,18 +55,17 @@
                     <h2 class="mx-auto justify-content-center">Events</h2>
                 </div>
             </div>
-            <div class="row w-75 mx-auto ex">
-                <div class="col-auto">
-                    <img src="assets/img/ex.png" data-aos="fade-right"
+            <div class="row w-75 mx-auto ex" style="background-image: linear-gradient(rgba(160, 48, 48, 0.45), rgba(315, 212, 707, 0.45)),url('/exhibitions/{{ $upcoming->title }}/cover/{{ $upcoming->filepath }}') !important;">
+                <!-- <div class="col-auto">
+                    <img src="{{ asset('/exhibitions/') }}/{{ $upcoming->title }}/cover/{{ $upcoming->filepath }}" data-aos="fade-right"
                         style="max-width: 350px !important; text-align: right !important;">
-                </div>
+                </div> -->
                 <div class="col">
                     <div class="container ex-content mb-0" data-aos="fade-left"
-                        style="vertical-align: bottom; line-height: 1.5 !important; padding-top: 210px !important;">
-                        <h4 style="font-weight: bolder !important; text-align: left !important;">Traces of a Moment / የቅፅበት
-                            ፈሊቃት</h4>
-                        <p style="text-align: left !important;"></p>
-                        <h6 style="text-align: left !important;">Guramayne Art Center</h6>
+                        style="vertical-align: bottom; line-height: 1.5 !important; padding-top: 145px !important;">
+                        <h4 style="font-weight: bolder !important; text-align: left !important;">{{ $upcoming->title }}</h4>
+                        <p style="text-align: left !important; font-size: 10px !important; font-weight: lighter !important;">{{ $upcoming->statement }}</p>
+                        <h6 style="text-align: left !important;">{{ $upcoming->location }}</h6>
                         <h5 style="text-align: left !important;">Now Open</h5>
                     </div>
                 </div>
@@ -93,13 +103,13 @@
                             @if($artwork->year == $year)
                                 <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                                     <div class="portfolio-wrap">
-                                        <img src="assets/img/art_Collection/Drawing/Trace of a Moment 002.jpg" class="img-fluid"
+                                        <img src="{{ asset('/artworks/') }}/{{ $artwork->filepath }}" class="img-fluid"
                                             alt="">
                                         <div class="portfolio-info">
                                             <h4>{{ $artwork->title }}</h4>
                                             <p>{{ $artwork->type }}</p>
                                             <div class="portfolio-links">
-                                                <a href="{{ asset('/artworks/') }}{{$artwork->filepath}}"
+                                                <a href="{{ asset('/artworks/') }}/{{ $artwork->filepath }}"
                                                     data-gallery="portfolioGallery" class="portfolio-lightbox"><i
                                                         class="bx bi-eye"></i></a>
                                             </div>

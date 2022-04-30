@@ -24,13 +24,14 @@ class PagesController extends Controller
             }
         }
         rsort($years);
-        // $upcoming = Exhibition::where('start_date')
+        $upcoming = Exhibition::where('start_date', '>=', Carbon::now())->orderBy('start_date', 'asc')->first();
 
         return view('guest.index', [
             'artworks' => $artworks,
             'exhibitions' => $exhibitions,
             'artist' => $artist,
-            'years' => $years
+            'years' => $years,
+            'upcoming' => $upcoming
         ]);
     }
 

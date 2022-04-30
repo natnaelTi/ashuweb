@@ -23,6 +23,7 @@ class CreateExhibitionsTable extends Migration
             $table->enum('type', ['solo', 'group']);
             $table->longText('description')->nullable();
             $table->string('installation_views')->nullable()->default('none.zip');
+            $table->string('filepath')->nullable()->default('none.jpg');
             $table->timestamps();
         });
     }

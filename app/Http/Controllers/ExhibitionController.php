@@ -24,16 +24,26 @@ class ExhibitionController extends Controller
             'location' => 'required|string',
             'type' => 'required|in:solo,group',
             'description' => 'string',
-            'filepath' => 'mime:zip'
+            'filepath' => 'mime:zip',
+            'installation_views' => 'mime:jpg,png'
         ]);
 
         if($request->has('filepath')) {
             $exhibition_year = Carbon::parse($request->end_date)->format('Y');
             $fp = $request['filepath'] . '.' . $exhibition_year . '.' . time() . '.' . $request->filepath->extension();
-            $request->filepath->move(public_path('exhibitions/{{$request->title}}'), $fp);
+            $request->filepath->move(public_path('exhibitions/{{$request->title}}/cover'), $fp);
         }
         else {
             $fp = 'none.zip';
+        }
+
+        if($request->has('installation_views')) {
+            $exhibition_year = Carbon::parse($request->end_date)->format('Y');
+            $ivs_fp = $request['installation_views'] . '.' . $exhibition_year . '.' . time() . '.' . $request->installation_views->extension();
+            $request->installation_views->move(public_path('exhibitions/{{$request->title}}/ivs'), $fp);
+        }
+        else {
+            $ivs_fp = 'none.jpg';
         }
 
         $exhibition = new Exhibition();
@@ -49,7 +59,8 @@ class ExhibitionController extends Controller
         else {
             $exhibition->description = 'none';
         }
-        $exhibition->installation_views = $fp;
+        $exhibition->installation_views = $ivs_fp;
+        $exhibition->filepath = $fp;
         $exhibition->save();
 
         return redirect()->route('add_exhibitions')->with('success', 'Exhibition successfully created');
@@ -75,7 +86,8 @@ class ExhibitionController extends Controller
             'location' => 'required|string',
             'type' => 'required|in:solo,group',
             'description' => 'string',
-            'filepath' => 'mime:zip'
+            'filepath' => 'mime:zip',
+            'installation_views' => 'mime:jpg,png'
         ]);
 
         if($request->has('filepath')) {
@@ -85,6 +97,15 @@ class ExhibitionController extends Controller
         }
         else {
             $fp = 'none.zip';
+        }
+
+        if($request->has('installation_views')) {
+            $exhibition_year = Carbon::parse($request->end_date)->format('Y');
+            $ivs_fp = $request['installation_views'] . '.' . $exhibition_year . '.' . time() . '.' . $request->installation_views->extension();
+            $request->installation_views->move(public_path('exhibitions/{{$request->title}}/ivs'), $fp);
+        }
+        else {
+            $ivs_fp = 'none.jpg';
         }
 
         $exhibition = Exhibition::find($id);
@@ -100,7 +121,8 @@ class ExhibitionController extends Controller
         else {
             $exhibition->description = 'none';
         }
-        $exhibition->installation_views = $fp;
+        $exhibition->installation_views = $ivs_fp;
+        $exhibition->filepath = $fp;
         $exhibition->save();
 
         return redirect()->route('cms_profile')->with('success', 'Exhibition successfully updated');

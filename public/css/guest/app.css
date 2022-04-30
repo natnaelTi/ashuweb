@@ -1050,7 +1050,6 @@ section {
 }
 
 .ex {
-  background-image: linear-gradient(rgba(160, 48, 48, 0.45), rgba(315, 212, 707, 0.45)),url('/assets/img/ll.jpg') !important;
   background-attachment: fixed !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
