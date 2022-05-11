@@ -20,7 +20,7 @@
 
     <main id="main">
         <!-- ======= About Section ======= -->
-        <section id="about" class="about">
+        <section id="about" class="about" style="height: 100vh !important; width: 100% !important; position: relative !important;">
             <div class="container" data-aos="fade-up">
                 <div class="row">
                     <div class="col-lg-5 col-sm-12 col-md-12 pt-4 pt-lg-0 content">
@@ -49,7 +49,7 @@
         <!-- End About Section -->
 
         <!-- ======= Exhibition Section ======= -->
-        <section id="exhibitions">
+        <section id="exhibitions" style="height: 100vh !important; width: 100% !important; position: relative !important;">
             <div class="container" data-aos="fade-up">
                 <div class="section-title">
                     <h2 class="mx-auto justify-content-center">Events</h2>
@@ -126,7 +126,7 @@
         <!-- End Portfolio Section -->
 
         <!-- ======= Contact Section ======= -->
-        <section id="contact" class="contact">
+        <section id="contact" class="contact" style="height: 100vh !important; width: 100% !important; position: relative !important;">
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
