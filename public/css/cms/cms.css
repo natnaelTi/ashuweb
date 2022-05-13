@@ -19768,7 +19768,7 @@ h3 {
 @font-face {
   font-family: "Glyphicons Halflings";
   src: url(/fonts/glyphicons-halflings-regular.eot?5be1347c682810f199c7f486f40c5974);
-  src: url(/fonts/glyphicons-halflings-regular.eot?5be1347c682810f199c7f486f40c5974?#iefix) format("embedded-opentype"), url(/fonts/glyphicons-halflings-regular.woff2?be810be3a3e14c682a257d6eff341fe4) format("woff2"), url(/fonts/glyphicons-halflings-regular.woff?82b1212e45a2bc35dd731913b27ad813) format("woff"), url(/fonts/glyphicons-halflings-regular.ttf?4692b9ec53fd5972caa2f2372ae20d16) format("truetype"), url(/fonts/glyphicons-halflings-regular.svg?060b2710bdbbe3dfe48b58d59bd5f1fb#glyphicons_halflingsregular) format("svg");
+  src: url(/fonts/glyphicons-halflings-regular.eot?5be1347c682810f199c7f486f40c5974?#iefix) format("embedded-opentype"), url(/fonts/glyphicons-halflings-regular.woff2?be810be3a3e14c682a257d6eff341fe4) format("woff2"), url(/fonts/glyphicons-halflings-regular.woff?82b1212e45a2bc35dd731913b27ad813) format("woff"), url(/fonts/glyphicons-halflings-regular.ttf?4692b9ec53fd5972caa2f2372ae20d16) format("truetype"), url(/fonts/glyphicons-halflings-regular.svg?9a17786234899efcc9639fcc31fcecf3#glyphicons_halflingsregular) format("svg");
 }
 .glyphicon {
   position: relative;
@@ -31585,7 +31585,7 @@ fieldset[disabled] .form-control {
 @font-face {
   font-family: "Pe-icon-7-stroke";
   src: url(/fonts/Pe-icon-7-stroke.eot?1d449ea50ab8389ee0789989bf9e6ac0);
-  src: url(/fonts/Pe-icon-7-stroke.eot?1d449ea50ab8389ee0789989bf9e6ac0?#iefixd7yf1v) format("embedded-opentype"), url(/fonts/Pe-icon-7-stroke.woff?11f7c073b050d62afb3341032ab11729) format("woff"), url(/fonts/Pe-icon-7-stroke.ttf?7233a7aee250f9b77fba5f735143ad39) format("truetype"), url(/fonts/Pe-icon-7-stroke.svg?09c6a96523589cb917992cb7b94e2621#Pe-icon-7-stroke) format("svg");
+  src: url(/fonts/Pe-icon-7-stroke.eot?1d449ea50ab8389ee0789989bf9e6ac0?#iefixd7yf1v) format("embedded-opentype"), url(/fonts/Pe-icon-7-stroke.woff?11f7c073b050d62afb3341032ab11729) format("woff"), url(/fonts/Pe-icon-7-stroke.ttf?7233a7aee250f9b77fba5f735143ad39) format("truetype"), url(/fonts/Pe-icon-7-stroke.svg?792cc624c9a439cd822fb2c1794e6b30#Pe-icon-7-stroke) format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -32629,6 +32629,14 @@ fieldset[disabled] .form-control {
   top: 2em !important;
   margin: auto !important;
   width: 93% !important;
+}
+
+.cms-form-caption {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: rgb(46, 99, 134) !important;
+  font-size: 8px !important;
+  text-transform: capitalize !important;
 }
 
 /*

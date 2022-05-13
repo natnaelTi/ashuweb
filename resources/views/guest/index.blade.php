@@ -3,7 +3,7 @@
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex flex-column justify-content-center">
         <div class="container" data-aos="zoom-in" data-aos-delay="100">
-            <h1>Ashenafe Mestika</h1>
+            <h1>{{ $artist->name }}</h1>
             <p style="color: #bd1220 !important;">I'm a visual artist.</p>
             <div class="social-links">
                 <a href="https://twitter.com/ashumestika" class="twitter"><i class="bx bxl-twitter"></i></a>
@@ -20,30 +20,28 @@
 
     <main id="main">
         <!-- ======= About Section ======= -->
-        <section id="about" class="about">
+        <section id="about" class="about" style="height: 100vh !important; width: 100% !important; position: relative !important;">
             <div class="container" data-aos="fade-up">
                 <div class="row">
-                    <div class="col-lg-4">
-                        <img src="assets/img/profile_img.jpg" class="img-fluid" alt="">
-                    </div>
-                    <div class="col pt-4 pt-lg-0 content">
+                    <div class="col-lg-5 col-sm-12 col-md-12 pt-4 pt-lg-0 content">
                         <h3>Bio in Brief </h3>
                         <p class="">
-                            Ashenafe Mestika was born and raised in Addis Ababa Ethiopia, graduated from Entoto Technical
-                            and Vocational Education Training College where he received a 10+3 Diploma in fine art,
-                            specialized in painting and Alle School of Fine Art & Designin Addis Ababa University in
-                            Bachelor of Fine Arts in Painting in 2020. He have participated in different group exhibition
-                            startingfrom 2010 at the Entoto Art College Gallery,Art of Ethiopiaat Sheraton Addis in 2011 and
-                            2012, The 1st Annual Ethiopia Visual Art Exhibition at Laphto Art Gallery, Harmony Group Art
-                            Exhibition at Ethiopian National Museum, “African Aesthetics” Fine Art|Photographs|Artifacts
-                            Exhibition Commemorating the OAU|AU 50th Anniversary at Addis Ababa University Institute of
-                            Ethiopian Studies Museum,“Addis Art Fair 2014” at Millennium Hall,“Ras Tafari The Majesty & The
-                            Movement Exhibit” at Ethiopian National Museumand Solo Exhibition “Strong Emotions and
-                            Expression” at Galley TO.MO.CA. Addis Ababa, 2015. “HEXAGON” Group Art Exhibition @ Laphto Art
-                            Gallery, Addis Ababa, Ethiopia Group Art Exhibition at MILLERNTOR GALLERY#6, Hamburg, Germany
-                            Group Art Exhibition at MILLERNTOR GALLRY #1 Kampala Uganda Group Art Exhibition at MILLERNTOR
-                            GALLERY#7and #8, Hamburg, Germany
+                            {{ $artist->bio }}
                         </p>
+                    </div>
+                    <div class="col-lg-7 col-sm-12 col-md-12 pt-4 pt-lg-0 content">
+                        <h5>Portfolio Exhibitions</h5>
+                        <table>
+                            <tbody>
+                                @foreach($exhibitions as $exhibition)
+                                    <tr class="my-3 py-5">
+                                        <td class="mx-5 px-3">{{ $exhibition->title }}</td>
+                                        <td class="mx-5 px-3">{{ \Carbon\Carbon::parse($exhibition->end_date)->format('Y') }}</td>
+                                        <td class="mx-5 px-3">{{ $exhibition->location }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -51,24 +49,23 @@
         <!-- End About Section -->
 
         <!-- ======= Exhibition Section ======= -->
-        <section id="exhibitions">
+        <section id="exhibitions" style="height: 100vh !important; width: 100% !important; position: relative !important;">
             <div class="container" data-aos="fade-up">
                 <div class="section-title">
                     <h2 class="mx-auto justify-content-center">Events</h2>
                 </div>
             </div>
-            <div class="row w-75 mx-auto ex">
-                <div class="col-auto">
-                    <img src="assets/img/ex.png" data-aos="fade-right"
+            <div class="row w-75 mx-auto ex" style="background-image: linear-gradient(rgba(160, 48, 48, 0.45), rgba(315, 212, 707, 0.45)),url('/exhibitions/{{ $upcoming->title }}/cover/{{ $upcoming->filepath }}') !important;">
+                <!-- <div class="col-auto">
+                    <img src="{{ asset('/exhibitions/') }}/{{ $upcoming->title }}/cover/{{ $upcoming->filepath }}" data-aos="fade-right"
                         style="max-width: 350px !important; text-align: right !important;">
-                </div>
+                </div> -->
                 <div class="col">
                     <div class="container ex-content mb-0" data-aos="fade-left"
-                        style="vertical-align: bottom; line-height: 1.5 !important; padding-top: 210px !important;">
-                        <h4 style="font-weight: bolder !important; text-align: left !important;">Traces of a Moment / የቅፅበት
-                            ፈሊቃት</h4>
-                        <p style="text-align: left !important;"></p>
-                        <h6 style="text-align: left !important;">Guramayne Art Center</h6>
+                        style="vertical-align: bottom; line-height: 1.5 !important; padding-top: 145px !important;">
+                        <h4 style="font-weight: bolder !important; text-align: left !important;">{{ $upcoming->title }}</h4>
+                        <p style="text-align: left !important; font-size: 10px !important; font-weight: lighter !important;">{{ $upcoming->statement }}</p>
+                        <h6 style="text-align: left !important;">{{ $upcoming->location }}</h6>
                         <h5 style="text-align: left !important;">Now Open</h5>
                     </div>
                 </div>
@@ -94,447 +91,42 @@
                         </ul>
                     </div>
                 </div>
-
-                <div class="row my-5 mx-4" data-aos="fade-up" data-aos-delay="200">
-                    <h3 style="font-weight: lighter !important;">
-                        2022
-                    </h3>
-                </div>
-                <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/art_Collection/Drawing/Trace of a Moment 002.jpg" class="img-fluid"
-                                alt="">
-                            <div class="portfolio-info">
-                                <h4>Trace of A Moment 002</h4>
-                                <p>Drawing</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/art_Collection/PAinting/Trace of a Moment 002.jpg"
-                                        data-gallery="portfolioGallery" class="portfolio-lightbox"><i
-                                            class="bx bi-eye"></i></a>
-                                </div>
-                            </div>
-                        </div>
+                
+                @foreach($years as $year)
+                    <div class="row my-5 mx-4" data-aos="fade-up" data-aos-delay="200">
+                        <h3 style="font-weight: lighter !important;">
+                            {{ $year }}
+                        </h3>
                     </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/art_Collection/Drawing/Trace of a Moment 003.jpg" class="img-fluid"
-                                alt="">
-                            <div class="portfolio-info">
-                                <h4>Trace of a Moment 003</h4>
-                                <p>Drawing</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/art_Collection/Drawing/Trace of a Moment 003.jpg"
-                                        data-gallery="portfolioGallery" class="portfolio-lightbox"><i
-                                            class="bx bi-eye"></i></a>
-                                    <!-- <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"></a> -->
+                    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+                        @foreach($artworks as $artwork)
+                            @if($artwork->year == $year)
+                                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                                    <div class="portfolio-wrap">
+                                        <img src="{{ asset('/artworks/') }}/{{ $artwork->filepath }}" class="img-fluid"
+                                            alt="">
+                                        <div class="portfolio-info">
+                                            <h4>{{ $artwork->title }}</h4>
+                                            <p>{{ $artwork->type }}</p>
+                                            <div class="portfolio-links">
+                                                <a href="{{ asset('/artworks/') }}/{{ $artwork->filepath }}"
+                                                    data-gallery="portfolioGallery" class="portfolio-lightbox"><i
+                                                        class="bx bi-eye"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                            @endif
+                        @endforeach
                     </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/art_Collection/Drawing/Trace of a Moment 004.jpg " class="img-fluid"
-                                alt="">
-                            <div class="portfolio-info">
-                                <h4>Trace of a Moment 004</h4>
-                                <p>Drawing</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/art_Collection/Drawing/Trace of a Moment 004.jpg"
-                                        data-gallery="portfolioGallery" class="portfolio-lightbox"><i
-                                            class="bx bi-eye"></i></a>
-                                    <!-- <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"></a> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/art_Collection/Drawing/Trace of a Moment 005.jpg" class="img-fluid"
-                                alt="">
-                            <div class="portfolio-info">
-                                <h4>Trace of a Moment 005</h4>
-                                <p>Drawing</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/art_Collection/Drawing/Trace of a Moment 005.jpg"
-                                        data-gallery="portfolioGallery" class="portfolio-lightbox"><i
-                                            class="bx bi-eye"></i></a>
-                                    <!-- <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"></a> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/art_Collection/Drawing/Trace of a Moment 006.jpg" class="img-fluid"
-                                alt="">
-                            <div class="portfolio-info">
-                                <h4>Trace of a Moment 006</h4>
-                                <p>Drawing</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/art_Collection/Drawing/Trace of a Moment 006.jpg"
-                                        data-gallery="portfolioGallery" class="portfolio-lightbox"><i
-                                            class="bx bi-eye"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row my-5 mx-4" data-aos="fade-up" data-aos-delay="200">
-                    <h3 style="font-weight: lighter !important;">
-                        2021
-                    </h3>
-                </div>
-                <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="/assets/img/art_Collection/PAinting/Rebirth 2013.JPG" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Rebirth</h4>
-                                <p>Painting</p>
-                                <div class="portfolio-links">
-                                    <a href="/assets/img/art_Collection/PAinting/Rebirth 2013.JPG"
-                                        data-gallery="portfolioGallery" class="portfolio-lightbox"><i
-                                            class="bx bx-plus"></i></a>
-                                    <!-- <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external"
-                        title="Portfolio Details"><i class="bx bx-link"></i></a> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="/assets/img/art_Collection/PAinting/Thought vs Reality 001 2020.jpg"
-                                class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Thought vs Reality 001</h4>
-                                <p>Painting</p>
-                                <div class="portfolio-links">
-                                    <a href="/assets/img/art_Collection/PAinting/Thought vs Reality 001 2020.jpg"
-                                        data-gallery="portfolioGallery" class="portfolio-lightbox"><i
-                                            class="bx bx-plus"></i></a>
-                                    <!-- <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external"
-                        title="Portfolio Details"><i class="bx bx-link"></i></a> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="/assets/img/art_Collection/PAinting/Thought vs Reality 002 2020.jpg"
-                                class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Thought vs Reality 002</h4>
-                                <p>Painting</p>
-                                <div class="portfolio-links">
-                                    <a href="/assets/img/art_Collection/PAinting/Thought vs Reality 002 2020.jpg"
-                                        data-gallery="portfolioGallery" class="portfolio-lightbox"><i
-                                            class="bx bx-plus"></i></a>
-                                    <!-- <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external"
-                        title="Portfolio Details"><i class="bx bx-link"></i></a> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="/assets/img/art_Collection/Drawing/Balance of life 01 2013.jpg"
-                                class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Balance of life 01</h4>
-                                <p>Drawing</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/art_Collection/Drawing/Balance of life 01 2013.jpg"
-                                        data-gallery="portfolioGallery" class="portfolio-lightbox"><i
-                                            class="bx bx-plus"></i></a>
-                                    <!-- <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external"
-                        title="Portfolio Details"><i class="bx bx-link"></i></a> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/art_Collection/Drawing/Balance of life 05 2013.jpg" class="img-fluid"
-                                alt="">
-                            <div class="portfolio-info">
-                                <h4>Balance of life 05</h4>
-                                <p>Drawing</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/art_Collection/Drawing/Balance of life 05 2013.jpg"
-                                        data-gallery="portfolioGallery" class="portfolio-lightbox"><i
-                                            class="bx bx-plus"></i></a>
-                                    <!-- <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external"
-                        title="Portfolio Details"><i class="bx bx-link"></i></a> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/art_Collection/Drawing/Inner portrait 04 2014.JPG" class="img-fluid"
-                                alt="">
-                            <div class="portfolio-info">
-                                <h4>Inner portrait 04</h4>
-                                <p>Drawing</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/art_Collection/Drawing/Inner portrait 04 2014.JPG"
-                                        data-gallery="portfolioGallery" class="portfolio-lightbox"><i
-                                            class="bx bx-plus"></i></a>
-                                    <!-- <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external"
-                        title="Portfolio Details"><i class="bx bx-link"></i></a> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/art_Collection/Drawing/Inner portrait 06 2014.JPG" class="img-fluid"
-                                alt="">
-                            <div class="portfolio-info">
-                                <h4>Inner protrait 06</h4>
-                                <p>Drawing</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/art_Collection/Drawing/Inner portrait 06 2014.JPG"
-                                        data-gallery="portfolioGallery" class="portfolio-lightbox"><i
-                                            class="bx bx-plus"></i></a>
-                                    <!-- <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external"
-                        title="Portfolio Details"><i class="bx bx-link"></i></a> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/art_Collection/Drawing/Trace of a Moment 033.jpg" class="img-fluid"
-                                alt="">
-                            <div class="portfolio-info">
-                                <h4>Trace of a Moment 033</h4>
-                                <p>Drawing</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/art_Collection/Drawing/Trace of a Moment 033.jpg"
-                                        data-gallery="portfolioGallery" class="portfolio-lightbox"><i
-                                            class="bx bx-plus"></i></a>
-                                    <!-- <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external"
-                        title="Portfolio Details"><i class="bx bx-link"></i></a> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row my-5 mx-4" data-aos="fade-up" data-aos-delay="200">
-                    <h3 style="font-weight: lighter !important;">
-                        2020
-                    </h3>
-                </div>
-                <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="/assets/img/art_Collection/PAinting/Rebirth 2013.JPG" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Rebirth</h4>
-                                <p>Painting</p>
-                                <div class="portfolio-links">
-                                    <a href="/assets/img/art_Collection/PAinting/Rebirth 2013.JPG"
-                                        data-gallery="portfolioGallery" class="portfolio-lightbox"><i
-                                            class="bx bx-plus"></i></a>
-                                    <!-- <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external"
-                        title="Portfolio Details"><i class="bx bx-link"></i></a> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="/assets/img/art_Collection/PAinting/Thought vs Reality 001 2020.jpg"
-                                class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Thought vs Reality 001</h4>
-                                <p>Painting</p>
-                                <div class="portfolio-links">
-                                    <a href="/assets/img/art_Collection/PAinting/Thought vs Reality 001 2020.jpg"
-                                        data-gallery="portfolioGallery" class="portfolio-lightbox"><i
-                                            class="bx bx-plus"></i></a>
-                                    <!-- <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external"
-                        title="Portfolio Details"><i class="bx bx-link"></i></a> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="/assets/img/art_Collection/PAinting/Thought vs Reality 002 2020.jpg"
-                                class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Thought vs Reality 002</h4>
-                                <p>Painting</p>
-                                <div class="portfolio-links">
-                                    <a href="/assets/img/art_Collection/PAinting/Thought vs Reality 002 2020.jpg"
-                                        data-gallery="portfolioGallery" class="portfolio-lightbox"><i
-                                            class="bx bx-plus"></i></a>
-                                    <!-- <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external"
-                        title="Portfolio Details"><i class="bx bx-link"></i></a> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="/assets/img/art_Collection/Drawing/Balance of life 01 2013.jpg"
-                                class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Balance of life 01</h4>
-                                <p>Drawing</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/art_Collection/Drawing/Balance of life 01 2013.jpg"
-                                        data-gallery="portfolioGallery" class="portfolio-lightbox"><i
-                                            class="bx bx-plus"></i></a>
-                                    <!-- <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external"
-                        title="Portfolio Details"><i class="bx bx-link"></i></a> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row my-5 mx-4" data-aos="fade-up" data-aos-delay="200">
-                    <h3 style="font-weight: lighter !important;">
-                        2019
-                    </h3>
-                </div>
-                <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="/assets/img/art_Collection/PAinting/Thought vs Reality 002 2020.jpg"
-                                class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Thought vs Reality 002</h4>
-                                <p>Painting</p>
-                                <div class="portfolio-links">
-                                    <a href="/assets/img/art_Collection/PAinting/Thought vs Reality 002 2020.jpg"
-                                        data-gallery="portfolioGallery" class="portfolio-lightbox"><i
-                                            class="bx bx-plus"></i></a>
-                                    <!-- <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external"
-                        title="Portfolio Details"><i class="bx bx-link"></i></a> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="/assets/img/art_Collection/Drawing/Balance of life 01 2013.jpg"
-                                class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                                <h4>Balance of life 01</h4>
-                                <p>Drawing</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/art_Collection/Drawing/Balance of life 01 2013.jpg"
-                                        data-gallery="portfolioGallery" class="portfolio-lightbox"><i
-                                            class="bx bx-plus"></i></a>
-                                    <!-- <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external"
-                        title="Portfolio Details"><i class="bx bx-link"></i></a> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/art_Collection/Drawing/Balance of life 05 2013.jpg" class="img-fluid"
-                                alt="">
-                            <div class="portfolio-info">
-                                <h4>Balance of life 05</h4>
-                                <p>Drawing</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/art_Collection/Drawing/Balance of life 05 2013.jpg"
-                                        data-gallery="portfolioGallery" class="portfolio-lightbox"><i
-                                            class="bx bx-plus"></i></a>
-                                    <!-- <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external"
-                        title="Portfolio Details"><i class="bx bx-link"></i></a> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/art_Collection/Drawing/Inner portrait 04 2014.JPG" class="img-fluid"
-                                alt="">
-                            <div class="portfolio-info">
-                                <h4>Inner portrait 04</h4>
-                                <p>Drawing</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/art_Collection/Drawing/Inner portrait 04 2014.JPG"
-                                        data-gallery="portfolioGallery" class="portfolio-lightbox"><i
-                                            class="bx bx-plus"></i></a>
-                                    <!-- <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external"
-                        title="Portfolio Details"><i class="bx bx-link"></i></a> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/art_Collection/Drawing/Inner portrait 06 2014.JPG" class="img-fluid"
-                                alt="">
-                            <div class="portfolio-info">
-                                <h4>Inner protrait 06</h4>
-                                <p>Drawing</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/art_Collection/Drawing/Inner portrait 06 2014.JPG"
-                                        data-gallery="portfolioGallery" class="portfolio-lightbox"><i
-                                            class="bx bx-plus"></i></a>
-                                    <!-- <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external"
-                        title="Portfolio Details"><i class="bx bx-link"></i></a> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-wrap">
-                            <img src="assets/img/art_Collection/Drawing/Trace of a Moment 033.jpg" class="img-fluid"
-                                alt="">
-                            <div class="portfolio-info">
-                                <h4>Trace of a Moment 033</h4>
-                                <p>Drawing</p>
-                                <div class="portfolio-links">
-                                    <a href="assets/img/art_Collection/Drawing/Trace of a Moment 033.jpg"
-                                        data-gallery="portfolioGallery" class="portfolio-lightbox"><i
-                                            class="bx bx-plus"></i></a>
-                                    <!-- <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external"
-                        title="Portfolio Details"><i class="bx bx-link"></i></a> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
-
-            </div>
+        </div>
         </section>
         <!-- End Portfolio Section -->
 
         <!-- ======= Contact Section ======= -->
-        <section id="contact" class="contact">
+        <section id="contact" class="contact" style="height: 100vh !important; width: 100% !important; position: relative !important;">
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">

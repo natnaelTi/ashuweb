@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('dob');
             $table->longText('bio');
             $table->longText('statement');
-            $table->string('profile_pic_path');
+            $table->string('filepath');
             $table->rememberToken();
             $table->timestamps();
         });

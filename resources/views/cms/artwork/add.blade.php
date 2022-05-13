@@ -14,6 +14,20 @@
                         </h4>
                     </div>
                     <div class="card-body cms-profile-exhibition">
+                        @if (Session::get('success'))
+                            <div class="alert alert-success" role="alert">
+                                <i class="pe-7s-light"></i>
+                                <strong class="font-bold">Success!</strong>
+                                <span class="block sm:inline">{{Session::get('success')}}</span>
+                            </div>
+                        @endif
+                        @if (Session::get('error'))
+                            <div class="alert alert-danger" role="alert">
+                                <i class="pe-7s-light"></i>
+                                <strong class="font-bold">Error!</strong>
+                                <span class="block sm:inline">{{Session::get('error')}}</span>
+                            </div>
+                        @endif
                         <form method="post" name="artwork_form" action="{{$route ?? route('store_artwork')}}" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
@@ -25,12 +39,12 @@
                                 <div class="col-lg-4 col-md-4 col-sm-12">
                                     <label for="width">Size: Width</label>
                                     <input class="form-control" type="text" id="width" name="width" placeholder="(WIDTH) cm" value="{{ old('width') ?? $artwork['width'] ?? '' }}"/>
-                                    <label for="width" style="margin-top: 0 !important; color:cornflowerblue !important; font-size: 8px !important; text-transform: capitalize !important;">Enter the spaital width of he artwork, in centimeters</label>
+                                    <label for="width" class="cms-form-caption">Enter the spaital width of the artwork, in centimeters</label>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-12">
                                     <label for="height">Size: Height</label>
                                     <input class="form-control" type="text" id="height" name="height" placeholder="(HEIGHT) cm" value="{{ old('height') ?? $artwork['height'] ?? '' }}"/>
-                                    <label for="height" style="margin-top: 0 !important; color:cornflowerblue !important; font-size: 8px !important; text-transform: capitalize !important;">Enter the spaital height of he artwork, in centimeters</label>
+                                    <label for="height" class="cms-form-caption">Enter the spaital height of the artwork, in centimeters</label>
                                 </div>
                             </div>
                             <div class="row">

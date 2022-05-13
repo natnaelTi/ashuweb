@@ -2,6 +2,20 @@
 @section('content')
 <div class="content">
     <div class="container-fluid">
+        @if (Session::get('success'))
+            <div class="alert alert-success" role="alert">
+                <i class="pe-7s-light"></i>
+                <strong class="font-bold">Success!</strong>
+                <span class="block sm:inline">{{Session::get('success')}}</span>
+            </div>
+        @endif
+        @if (Session::get('error'))
+            <div class="alert alert-danger" role="alert">
+                <i class="pe-7s-light"></i>
+                <strong class="font-bold">Error!</strong>
+                <span class="block sm:inline">{{Session::get('error')}}</span>
+            </div>
+        @endif
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <div class="card cms-profile-card">
@@ -13,6 +27,7 @@
                             <div class="row text-center">
                                 <h3>{{ $artist->name }}</h3>
                                 <h5>Age: {{ $age }}</h5>
+                                <a href="{{ route('edit_profile', $artist->id) }}" class="btn btn-warning">Edit Profile</a>
                             </div>
                         </div>
                     </div>
@@ -25,14 +40,20 @@
                                 @foreach ($alumnis as $alumni)
                                     <li>
                                         <div class="row">
-                                            <div class="col-5">
+                                            <div class="col">
                                                 {{ $alumni->organisation }}
                                             </div>
-                                            <div class="col-2">
+                                            <div class="col">
                                                 {{ $alumni->year }}
                                             </div>
-                                            <div class="col-5">
+                                            <div class="col">
                                                 {{ $alumni->location }}
+                                            </div>
+                                            <div class="col">
+                                                <a href="{{ route('edit_alumni', $alumni->id) }}"><i class="pe-7s-edit"></i></a>
+                                            </div>
+                                            <div class="col">
+                                                <a href="{{ route('delete_alumni', $alumni->id) }}"><i class="pe-7s-trash"></i></a>
                                             </div>
                                         </div>
                                     </li>
@@ -40,6 +61,7 @@
                             @else
                                 <p>No Alumni have been registered yet.</p>
                             @endif
+                            <a href="{{ route('add_alumni') }}"><i class="pe-7s-add"></i></a>
                         </ul>
                     </div>
                 </div>
@@ -105,7 +127,9 @@
                                                 <td>Some...</td>
                                                 <td>Some...</td>
                                                 <td>none</td>
-                                                <td>Edit</td>
+                                                <td>
+                                                    <a href="{{ route('edit_exhibition', $exhibition->id) }}" class="btn btn-warning">Edit</a>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     @else
@@ -113,6 +137,9 @@
                                             <p class="text-center">No exhibitions have been recorded yet.</p>
                                         </tr>
                                     @endif
+                                    <tr>
+                                        <a class="btn btn-primary" href="{{ route('add_exhibition') }}">Add Exhibition</a>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

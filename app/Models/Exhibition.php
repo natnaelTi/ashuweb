@@ -17,7 +17,8 @@ class Exhibition extends Model
         'location',
         'type',
         'description',
-        'installation_views'
+        'installation_views',
+        'filepath'
     ];
 
     /**

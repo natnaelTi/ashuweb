@@ -18,6 +18,7 @@ class CreateAlumnisTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('organisation');
             $table->year('year');
+            $table->string('location');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');

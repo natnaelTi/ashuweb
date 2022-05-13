@@ -21,9 +21,9 @@ class CreateArtworksTable extends Migration
             $table->string('height');
             $table->enum('type', ['painting', 'drawing']);
             $table->string('medium');
-            $table->year('year');
+            $table->string('year');
             $table->float('price');
-            $table->string('desription');
+            $table->string('description');
             $table->string('filepath');
             $table->timestamps();
 
