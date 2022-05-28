@@ -1,7 +1,7 @@
 @extends('layouts.guest')
 @section('content')
     <!-- ======= Hero Section ======= -->
-    <section id="hero" class="d-flex flex-column justify-content-center">
+    <section id="hero" class="d-flex flex-column justify-content-center" style="background: url('artists/{{$artist->filepath}}') no-repeat !important;">
         <div class="container" data-aos="zoom-in" data-aos-delay="100">
             <h1>{{ $artist->name }}</h1>
             <p style="color: #bd1220 !important;">I'm a visual artist.</p>

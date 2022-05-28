@@ -240,10 +240,10 @@ h1, h2, h3, h4, h5, h6 {
 # Hero Section
 --------------------------------------------------------------*/
 #hero {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   background: url("../../images/profile.jpg") top right no-repeat;
-  background-size: cover;
+  background-size: stretch;
   position: relative;
 }
 @media (min-width: 992px) {

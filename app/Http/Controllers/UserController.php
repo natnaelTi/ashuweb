@@ -39,7 +39,7 @@ class UserController extends Controller
         $artist->dob = Carbon::parse($request->input('dob'))->format('Y-M-d');
         $artist->statement = $request->input('statement');
         if($request->has('filepath')) {
-            $artist->profile_pic = $fp;
+            $artist->filepath = $fp;
         }
         $stat = $artist->update();
 

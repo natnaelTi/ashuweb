@@ -49,9 +49,9 @@
                                             <tr>
                                                 <td>
                                                     @if($artwork->filepath != 'none.png')
-                                                        <img src="{{asset('$artwork->filepath')}}"/>
+                                                        <img src="{{asset('artworks/'.$artwork->filepath)}}" width="50px"/>
                                                     @else
-                                                        No Preview
+                                                        <small>No Preview</small>
                                                     @endif
                                                 </td>
                                                 <td>{{ $artwork->title }}</td>

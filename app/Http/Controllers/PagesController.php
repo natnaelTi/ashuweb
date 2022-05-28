@@ -41,7 +41,7 @@ class PagesController extends Controller
         $total_artworks = 0;
         $total_photos = 0;
         $total_exhibitions = 0;
-        $profile_pic_path = asset($artist->profile_pic_path);
+        $profile_pic_path = asset('artists/'.$artist->filepath);
         $age = Carbon::parse($artist->dob)->age;
         $alumni = ['Ale School of Fine Arts | AAU', 'Hamburg Fine Arts Fellowship'];
         $exhibitions  = [];
@@ -63,7 +63,7 @@ class PagesController extends Controller
         $artist = User::find(1);
         $year = Carbon::now()->format('Y');
         $age = Carbon::parse($artist->dob)->age;
-        $profile_pic_path = asset($artist->profile_pic_path);
+        $profile_pic_path = asset('artists/'.$artist->filepath);
 
         $alumnis = Alumni::all();
 

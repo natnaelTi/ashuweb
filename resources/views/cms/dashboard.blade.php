@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="card cms-info-cards cms-ic-photos" id="cms-ic-photos">
+                    <div class="card cms-info-cards cms-ic-photos" id="cms-ic-photos" style="background-image: linear-gradient(to bottom, rgba(77, 90, 153, 0.76), rgba(43, 10, 15, 0.89)), url('./images/card-painting.jpg') !important;">
                         <div class="card-body">
                             <h3 class="text-right mt-0 pt-0"><i class="pe-7s-camera"></i></h3>
                             <h1>{{ $total_photos }}</h1>
@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="card cms-info-cards cms-ic-exhibitions" id="cms-ic-exhibitions">
+                    <div class="card cms-info-cards cms-ic-exhibitions" id="cms-ic-exhibitions" style="background-image: linear-gradient(to bottom, rgba(77, 90, 153, 0.76), rgba(43, 10, 15, 0.89)), url('./images/card-exhibition.jpg') !important;">
                         <div class="card-body">
                             <h3 class="text-right mt-0 pt-0"><i class="pe-7s-look"></i></h3>
                             <h1>{{ $total_exhibitions }}</h1>

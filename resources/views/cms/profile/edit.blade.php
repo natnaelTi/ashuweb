@@ -40,9 +40,16 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
                                             <label for="dob">Date of Birth</label>
                                             <input class="form-control" type="date" id="dob" name="dob" placeholder="Select artist's date of birth" value="{{ old('dob') ?? $artist['dob'] ?? '' }}"/>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <label for="filepath">Image</label>
+                                            <label class="btn btn-secondary" for="filepath">
+                                                <span class="my-2">Upload Profile Picture</span>
+                                                <input type="file" class="hidden form-control" id="filepath" name="filepath"/>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
