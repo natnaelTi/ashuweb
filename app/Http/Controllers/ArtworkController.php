@@ -20,7 +20,7 @@ class ArtworkController extends Controller
             'width' => 'required|numeric',
             'height' => 'required|numeric',
             'type' => 'required|in:painting,drawing',
-            'medium' => 'required|in:oil,acrylic,wood-cut,stensil-print,sculpture,mixed-media',
+            'medium' => 'required',
             'year' => 'required|numeric',
             'price' => 'required|numeric',
             'description' => 'string',

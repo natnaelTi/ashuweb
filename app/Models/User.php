@@ -25,6 +25,8 @@ class User extends Authenticatable
         'dob',
         'bio',
         'statement',
+        'exhibitions',
+        'prs',
         'filepath'
     ];
 

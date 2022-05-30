@@ -22,6 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('dob');
             $table->longText('bio');
             $table->longText('statement');
+            $table->longText('exhibitions');
+            $table->array('prs')->nullable()->default(['none']);
             $table->string('filepath');
             $table->rememberToken();
             $table->timestamps();

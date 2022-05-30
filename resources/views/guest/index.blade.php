@@ -1,10 +1,10 @@
 @extends('layouts.guest')
 @section('content')
     <!-- ======= Hero Section ======= -->
-    <section id="hero" class="d-flex flex-column justify-content-center" style="background: url('artists/{{$artist->filepath}}') no-repeat !important;">
+    <section id="hero" class="d-flex flex-column justify-content-center" style="">
         <div class="container" data-aos="zoom-in" data-aos-delay="100">
             <h1>{{ $artist->name }}</h1>
-            <p style="color: #bd1220 !important;">I'm a visual artist.</p>
+            <p style="color: #bd1220 !important;">visual artist.</p>
             <div class="social-links">
                 <a href="https://twitter.com/ashumestika" class="twitter"><i class="bx bxl-twitter"></i></a>
                 <a href="https://www.facebook.com/AshenafeMestikaArt/" class="facebook"><i
@@ -22,57 +22,27 @@
         <!-- ======= About Section ======= -->
         <section id="about" class="about" style="height: 100vh !important; width: 100% !important; position: relative !important;">
             <div class="container" data-aos="fade-up">
+                <div class="section-title">
+                    <h2>About</h2>
+                </div>
+                
                 <div class="row">
-                    <div class="col-lg-5 col-sm-12 col-md-12 pt-4 pt-lg-0 content">
-                        <h3>Bio in Brief </h3>
-                        <p class="">
-                            {{ $artist->bio }}
+                    <div class="col-lg-12 col-sm-12 col-md-12 pt-4 pt-lg-0 content">
+                        <p style="font-size: 15px !important; line-height: 1.5 !important; padding-left: 0 !important; maring-left: 0 !important; padding-top: 5em !important;">
+                            {!! $artist->bio !!}
                         </p>
                     </div>
-                    <div class="col-lg-7 col-sm-12 col-md-12 pt-4 pt-lg-0 content">
-                        <h5>Portfolio Exhibitions</h5>
-                        <table>
-                            <tbody>
-                                @foreach($exhibitions as $exhibition)
-                                    <tr class="my-3 py-5">
-                                        <td class="mx-5 px-3">{{ $exhibition->title }}</td>
-                                        <td class="mx-5 px-3">{{ \Carbon\Carbon::parse($exhibition->end_date)->format('Y') }}</td>
-                                        <td class="mx-5 px-3">{{ $exhibition->location }}</td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                    
+                    <div class="col-lg-12 col-sm-12 col-md-12 pt-4 pt-lg-0 content">
+                        <p style="font-size: 15px !important; line-height: 1.5 !important; padding-left: 0 !important; maring-left: 0 !important; padding-top: 5em !important;">
+                            {!! $artist->statement !!}
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
         <!-- End About Section -->
-
-        <!-- ======= Exhibition Section ======= -->
-        <section id="exhibitions" style="height: 100vh !important; width: 100% !important; position: relative !important;">
-            <div class="container" data-aos="fade-up">
-                <div class="section-title">
-                    <h2 class="mx-auto justify-content-center">Events</h2>
-                </div>
-            </div>
-            <div class="row w-75 mx-auto ex" style="background-image: linear-gradient(rgba(160, 48, 48, 0.45), rgba(315, 212, 707, 0.45)),url('/exhibitions/{{ $upcoming->title }}/cover/{{ $upcoming->filepath }}') !important;">
-                <!-- <div class="col-auto">
-                    <img src="{{ asset('/exhibitions/') }}/{{ $upcoming->title }}/cover/{{ $upcoming->filepath }}" data-aos="fade-right"
-                        style="max-width: 350px !important; text-align: right !important;">
-                </div> -->
-                <div class="col">
-                    <div class="container ex-content mb-0" data-aos="fade-left"
-                        style="vertical-align: bottom; line-height: 1.5 !important; padding-top: 145px !important;">
-                        <h4 style="font-weight: bolder !important; text-align: left !important;">{{ $upcoming->title }}</h4>
-                        <p style="text-align: left !important; font-size: 10px !important; font-weight: lighter !important;">{{ $upcoming->statement }}</p>
-                        <h6 style="text-align: left !important;">{{ $upcoming->location }}</h6>
-                        <h5 style="text-align: left !important;">Now Open</h5>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End Exhibition Section -->
-
+        
         <!-- ======= Portfolio Section ======= -->
         <section id="portfolio" class="portfolio section-bg">
             <div class="container" data-aos="fade-up">
@@ -85,9 +55,10 @@
                     <div class="col-lg-12 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
                         <ul id="portfolio-flters">
                             <li data-filter="*" class="filter-active">All</li>
-                            <li data-filter=".filter-app">Artwork</li>
-                            <!-- <li data-filter=".filter-card">Photography</li> -->
-                            <!-- <li data-filter=".filter-web">Video Art</li> -->
+                            <li data-filter="#painting">Painting</li>
+                            <li data-filter="#drawing">Drawing</li> 
+                            <li data-filter="#photography">Photography</li>
+                            <li data-filter="#video">Videography</li>
                         </ul>
                     </div>
                 </div>
@@ -101,7 +72,7 @@
                     <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
                         @foreach($artworks as $artwork)
                             @if($artwork->year == $year)
-                                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                                <div class="col-lg-4 col-md-6 portfolio-item" id="{{$artwork->type}}">
                                     <div class="portfolio-wrap">
                                         <img src="{{ asset('/artworks/') }}/{{ $artwork->filepath }}" class="img-fluid"
                                             alt="">
@@ -124,6 +95,52 @@
         </div>
         </section>
         <!-- End Portfolio Section -->
+
+        <!-- ======= Exhibition Section ======= -->
+        <section id="exhibitions" style="height: 100vh !important; width: 100% !important; position: relative !important;">
+            <div class="container" data-aos="fade-up">
+                <div class="section-title">
+                    <h2 class="mx-auto justify-content-center">Exhibitions</h2>
+                </div>
+            </div>
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-md-12 pt-4 pt-lg-0 content">
+                        <p style="font-size: 15px !important; line-height: 1.5 !important; padding-left: 0 !important; maring-left: 0 !important; padding-top: 5em !important;">
+                            {!! $artist->exhibitions !!}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Exhibition Section -->
+
+        <!-- ======= Links Section ======= -->
+        <section id="links" style="height: 100vh !important; width: 100% !important; position: relative !important;">
+            <div class="container" data-aos="fade-up">
+                <div class="section-title">
+                    <h2 class="mx-auto justify-content-center">Links</h2>
+                </div>
+            </div>
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    @if (count($prs) > 0)
+                        @foreach ($prs as $pr)
+                            <div class="col-lg-4 col-sm-6 col-md-12 pt-4 pt-lg-0 content">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <img src="{{$pr->image}}" alt="{{$pr->title}}"/ width="50px">
+                                        <h5 class="pt-4">{{$pr->title}}</h5>
+                                        {{-- <p> --}}
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
+            </div>
+        </section>
+        <!-- End Exhibition Section -->
 
         <!-- ======= Contact Section ======= -->
         <section id="contact" class="contact" style="height: 100vh !important; width: 100% !important; position: relative !important;">

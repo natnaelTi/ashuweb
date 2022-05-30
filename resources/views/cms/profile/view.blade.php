@@ -21,9 +21,9 @@
                 <div class="card cms-profile-card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="center">
-                                <img src="{{ $profile_pic_path }}" alt="Artist Profile Picture" />
-                            </div>
+                            <!--<div class="center">-->
+                            <!--    <img src="{{asset('artists/'.$artist->filepath)}}" alt="Artist Profile Picture" />-->
+                            <!--</div>-->
                             <div class="row text-center">
                                 <h3>{{ $artist->name }}</h3>
                                 <h5>Age: {{ $age }}</h5>
@@ -70,7 +70,7 @@
                 <div class="card cms-profile-card">
                     <div class="card-body">
                         <h4 class="my-4">Artist's Bio</h4>
-                        <p class="bio" data-read-more="{ visible: false, useStyledContainer: false }">{{ $artist->bio }}</p>
+                        <p class="bio" data-read-more="{ visible: false, useStyledContainer: false }">{!! $artist->bio !!}</p>
                     </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@
                 <div class="card cms-profile-card">
                     <div class="card-body">
                         <h4 class="my-4">{{ $year }}'s Art Statement</h4>
-                        <p class="bio" data-read-more="{ visible: false, useStyledContainer: false }">{{ $artist->statement }}</p>
+                        <p class="bio" data-read-more="{ visible: false, useStyledContainer: false }">{!! $artist->statement !!}</p>
                     </div>
                 </div>
             </div>

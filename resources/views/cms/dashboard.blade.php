@@ -70,7 +70,7 @@
                                 <div class="col-lg-5 col-md-6 col-sm-12">
                                     <div class="row">
                                         <div class="center">
-                                            <img src="{{ $profile_pic_path }}" alt="Artist Profile Picture" />
+                                            <img src="{{ asset('/artists/') }}/{{ $artist->filepath }}" alt="Artist Profile Picture"/>
                                         </div>
                                     </div>
                                     <div class="row text-center">

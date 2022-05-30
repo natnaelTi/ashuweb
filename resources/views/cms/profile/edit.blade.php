@@ -55,13 +55,25 @@
                                 </div>
                                 <div class="col-lg-8 col-md-12 col-sm-12">
                                     <label for="bio">Artist Bio</label>
-                                    <textarea class="form-control" type="text" id="bio" name="bio" placeholder="Enter a brief biography of the artist" value="{{ old('bio') ?? $artist['bio'] ?? '' }}">{{ old('bio') ?? $artist['bio'] ?? '' }}</textarea>
+                                    <textarea class="form-control ckeditor" type="text" id="bio" name="bio" placeholder="Enter a brief biography of the artist" value="{{ old('bio') ?? $artist['bio'] ?? '' }}">{{ old('bio') ?? $artist['bio'] ?? '' }}</textarea>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                 <label for="statement">Artist Statement</label>
-                                    <textarea class="form-control" type="text" id="statement" name="statement" placeholder="Enter the current statement of the artist on his carrier and works" value="{{ old('statement') ?? $artist['statment'] ?? '' }}">{{ old('statement') ?? $artist['statement'] ?? '' }}</textarea>
+                                    <textarea class="form-control ckeditor" type="text" id="statement" name="statement" placeholder="Enter the current statement of the artist on his carrier and works" value="{{ old('statement') ?? $artist['statment'] ?? '' }}">{{ old('statement') ?? $artist['statement'] ?? '' }}</textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <label for="exhibitions">Exhibitions</label>
+                                    <textarea class="form-control ckeditor" type="text" id="exhibitions" name="exhibitions" placeholder="Enter a biref list of exhibitions the artist has done in his carrier" value="{{ old('exhibitions') ?? $artist['exhibitions'] ?? '' }}">{{ old('exhibitions') ?? $artist['exhibitions'] ?? '' }}</textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <label for="prs">PR References</label>
+                                    <input class="form-control" type="text" id="prs" name="prs" placeholder="List the artist\'s PR links separated with a comma" value="{{ old('prs') ?? $artist['prs'] ?? '' }}" />
                                 </div>
                             </div>
                             <div class="row">

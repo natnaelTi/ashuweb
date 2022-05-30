@@ -36,6 +36,8 @@
 
     <!--  CSS for Demo Purpose, don't include it in your project  -->
     <link href="{{ asset('css/cms/demo.css') }}" rel="stylesheet" />
+    
+    <script src="//cdn.ckeditor.com/4.19.0/full/ckeditor.js"></script>
 </head>
 
 <body>
@@ -111,6 +113,12 @@
             </div>
         </div>
     </div>
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.ckeditor').ckeditor();
+        });
+    </script>
 </body>
 
 <!--   Core JS Files   -->

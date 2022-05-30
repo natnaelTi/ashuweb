@@ -41,7 +41,7 @@ class PagesController extends Controller
         $total_artworks = 0;
         $total_photos = 0;
         $total_exhibitions = 0;
-        $profile_pic_path = asset('artists/'.$artist->filepath);
+        $profile_pic_path = asset('./artists/'.$artist->filepath);
         $age = Carbon::parse($artist->dob)->age;
         $alumni = ['Ale School of Fine Arts | AAU', 'Hamburg Fine Arts Fellowship'];
         $exhibitions  = [];
