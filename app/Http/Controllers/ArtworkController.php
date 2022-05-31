@@ -22,7 +22,6 @@ class ArtworkController extends Controller
             'type' => 'required|in:painting,drawing',
             'medium' => 'required',
             'year' => 'required|numeric',
-            'price' => 'required|numeric',
             'description' => 'string',
             'filepath' => 'required'
         ]);
@@ -40,9 +39,14 @@ class ArtworkController extends Controller
         $artwork->price = $request->input('price');
         $artwork->description = $request->input('description');
         $artwork->filepath = $fp;
-        $artwork->save();
+        $stat = $artwork->save();
 
-        return redirect()->route('cms_artwork')->with('success', 'Artwork successfully created');
+        if($stat){
+            return redirect()->route('cms_artwork')->with('success', 'Artwork successfully created');
+        }
+        else{
+            return back()->with('error', 'Artwork failed to be saved');
+        }
 
     }
 
@@ -64,13 +68,15 @@ class ArtworkController extends Controller
             'type' => 'required|in:painting,drawing',
             'medium' => 'required|in:oil,acrylic,wood-cut,stensil-print,sculpture,mixed-media',
             'year' => 'required|numeric',
-            'price' => 'required|numeric',
+            // 'price' => 'required|numeric',
             'description' => 'string',
-            'filepath' => 'required'
+            // 'filepath' => 'required'
         ]);
 
-        $fp = $request['year'] . '.' . $request['title'] . '.' . $request['medium'] . time() . '.' . $request->filepath->extension();
-        $request->filepath->move(public_path('artworks'), $fp);
+        if($request->has('filepath')){
+            $fp = $request['year'] . '.' . $request['title'] . '.' . $request['medium'] . time() . '.' . $request->filepath->extension();
+            $request->filepath->move(public_path('artworks'), $fp);   
+        }
 
         $artwork = Artwork::find($id);
         $artwork->title = $request->input('title');
@@ -80,8 +86,12 @@ class ArtworkController extends Controller
         $artwork->medium = $request->input('medium');
         $artwork->year = $request->input('year');
         $artwork->price = $request->input('price');
-        $artwork->description = $request->input('description');
-        $artwork->filepath = $fp;
+        if($request->has('description')){
+            $artwork->description = $request->input('description');
+        }
+        if($request->has('filepath')){
+            $artwork->filepath = $fp;
+        }
         $artwork->save();
 
         return redirect()->route('cms_artwork')->with('success', 'Artwork successfully updated');

@@ -14,20 +14,9 @@ class UserController extends Controller
     public function edit($id)
     {
         $artist = User::find($id);
-        $embed = new Embed();
-        $pr_views = [];
-
-        if(count($artist->prs) > 0 && !in_array('none', $artist->prs)){
-            $prs = $artist->prs;
-            foreach($prs as $pr){
-                $info = $embed->get($prs);
-                array_push($pr_views, $pr);
-            }
-        }
 
         return view('cms.profile.edit', [
             'artist' => $artist,
-            'prs' => $pr_views,
             'route' => route('update_profile', $id)
         ]);
     }
@@ -60,8 +49,10 @@ class UserController extends Controller
         }
 
         if($request->has('prs')){
-            $prs = explode(',', $request->input('prs'));
-            $artist->prs = $prs;
+            $artist->prs = $request->input('prs');
+        }
+        else{
+            $artist->prs = 'none';
         }
         
         if($request->has('filepath')) {

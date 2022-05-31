@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->longText('bio');
             $table->longText('statement');
             $table->longText('exhibitions');
-            $table->array('prs')->nullable()->default(['none']);
+            $table->string('prs')->nullable()->default('none');
             $table->string('filepath');
             $table->rememberToken();
             $table->timestamps();

@@ -20,7 +20,7 @@
 
     <main id="main">
         <!-- ======= About Section ======= -->
-        <section id="about" class="about" style="height: 100vh !important; width: 100% !important; position: relative !important;">
+        <section id="about" class="about" style="height: auto !important; width: 100% !important; position: relative !important;">
             <div class="container" data-aos="fade-up">
                 <div class="section-title">
                     <h2>About</h2>
@@ -28,13 +28,13 @@
                 
                 <div class="row">
                     <div class="col-lg-12 col-sm-12 col-md-12 pt-4 pt-lg-0 content">
-                        <p style="font-size: 15px !important; line-height: 1.5 !important; padding-left: 0 !important; maring-left: 0 !important; padding-top: 5em !important;">
+                        <p style="font-size: 15px !important; line-height: 1.5 !important; padding-left: 0 !important; maring-left: 0 !important; padding-top: 2em !important;">
                             {!! $artist->bio !!}
                         </p>
                     </div>
                     
                     <div class="col-lg-12 col-sm-12 col-md-12 pt-4 pt-lg-0 content">
-                        <p style="font-size: 15px !important; line-height: 1.5 !important; padding-left: 0 !important; maring-left: 0 !important; padding-top: 5em !important;">
+                        <p style="font-size: 15px !important; line-height: 1.5 !important; padding-left: 0 !important; maring-left: 0 !important; padding-top: 1em !important;">
                             {!! $artist->statement !!}
                         </p>
                     </div>
@@ -53,51 +53,103 @@
 
                 <div class="row">
                     <div class="col-lg-12 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
-                        <ul id="portfolio-flters">
-                            <li data-filter="*" class="filter-active">All</li>
-                            <li data-filter="#painting">Painting</li>
-                            <li data-filter="#drawing">Drawing</li> 
-                            <li data-filter="#photography">Photography</li>
-                            <li data-filter="#video">Videography</li>
-                        </ul>
+                        <div class="tabs">
+                            <input type="radio" id="drawings" name="tab-control" checked>
+                            <input type="radio" id="paintings" name="tab-control">
+                            <input type="radio" id="photography" name="tab-control">
+                            <input type="radio" id="videography" name="tab-control">
+                            <ul>
+                                <li title="Drawings"><label for="drawings" role="button"><i class='bx bx-pencil'></i><br><span>Drawings</span></label></li>
+                                <li title="Paintings"><label for="paintings" role="button"><i class='bx bx-palette'></i><br><span>Paintings</span></label></li>
+                                <li title="Photography"><label for="photography" role="button"><i class='bx bx-camera'></i><br><span>Photography</span></label></li>
+                                <li title="Videography"><label for="videography" role="button"><i class='bx bx-film'></i><br><span>Videography</span></label></li>
+                            </ul>
+                        
+                            <div class="slider">
+                                <div class="indicator"></div>
+                            </div>
+                            <div class="content">
+                                <section>
+                                    @foreach($drawing_years as $year)
+                                        <div class="row my-5 mx-4" data-aos="fade-up" data-aos-delay="200">
+                                            <h3 style="font-weight: lighter !important;">
+                                                {{ $year }}
+                                            </h3>
+                                        </div>
+                                        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+                                            @foreach($drawings as $artwork)
+                                                @if($artwork->year == $year)
+                                                    <div class="col-lg-4 col-md-6 portfolio-item" id="{{$artwork->type}}">
+                                                        <div class="portfolio-wrap">
+                                                            <img src="{{ asset('/artworks/') }}/{{ $artwork->filepath }}" class="img-fluid"
+                                                                alt="">
+                                                            <div class="portfolio-info">
+                                                                <h4>{{ $artwork->title }}</h4>
+                                                                <p>{{ $artwork->type }}</p>
+                                                                <div class="portfolio-links">
+                                                                    <a href="{{ asset('/artworks/') }}/{{ $artwork->filepath }}"
+                                                                        data-gallery="portfolioGallery" class="portfolio-lightbox"><i
+                                                                            class="bx bi-eye"></i></a>
+                                                                    <small style="display: block !important; font-size: 10px !important; text-align: center !important; font-weight: 300 !important;">{{ $artwork->medium }}</small>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    @endforeach
+                                </section>
+                                
+                                <section>
+                                    @foreach($painting_years as $year)
+                                        <div class="row my-5 mx-4" data-aos="fade-up" data-aos-delay="200">
+                                            <h3 style="font-weight: lighter !important;">
+                                                {{ $year }}
+                                            </h3>
+                                        </div>
+                                        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+                                            @foreach($paintings as $artwork)
+                                                @if($artwork->year == $year)
+                                                    <div class="col-lg-4 col-md-6 portfolio-item" id="{{$artwork->type}}">
+                                                        <div class="portfolio-wrap">
+                                                            <img src="{{ asset('/artworks/') }}/{{ $artwork->filepath }}" class="img-fluid"
+                                                                alt="">
+                                                            <div class="portfolio-info">
+                                                                <h4>{{ $artwork->title }}</h4>
+                                                                <p>{{ $artwork->type }}</p>
+                                                                <div class="portfolio-links">
+                                                                    <a href="{{ asset('/artworks/') }}/{{ $artwork->filepath }}"
+                                                                        data-gallery="portfolioGallery" class="portfolio-lightbox"><i
+                                                                            class="bx bi-eye"></i></a>
+                                                                                                            <small style="display: block !important; font-size: 10px !important; text-align: center !important; font-weight: 300 !important;">{{ $artwork->medium }}</small>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    @endforeach
+                                </section>
+                                
+                                <section>
+                                    
+                                </section>
+                                
+                                <section>
+                                    
+                                </section>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
-                @foreach($years as $year)
-                    <div class="row my-5 mx-4" data-aos="fade-up" data-aos-delay="200">
-                        <h3 style="font-weight: lighter !important;">
-                            {{ $year }}
-                        </h3>
-                    </div>
-                    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-                        @foreach($artworks as $artwork)
-                            @if($artwork->year == $year)
-                                <div class="col-lg-4 col-md-6 portfolio-item" id="{{$artwork->type}}">
-                                    <div class="portfolio-wrap">
-                                        <img src="{{ asset('/artworks/') }}/{{ $artwork->filepath }}" class="img-fluid"
-                                            alt="">
-                                        <div class="portfolio-info">
-                                            <h4>{{ $artwork->title }}</h4>
-                                            <p>{{ $artwork->type }}</p>
-                                            <div class="portfolio-links">
-                                                <a href="{{ asset('/artworks/') }}/{{ $artwork->filepath }}"
-                                                    data-gallery="portfolioGallery" class="portfolio-lightbox"><i
-                                                        class="bx bi-eye"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-                        @endforeach
-                    </div>
-                @endforeach
             </div>
-        </div>
         </section>
         <!-- End Portfolio Section -->
 
         <!-- ======= Exhibition Section ======= -->
-        <section id="exhibitions" style="height: 100vh !important; width: 100% !important; position: relative !important;">
+        <section id="exhibitions" style="height: auto !important; width: 100% !important; position: relative !important;">
             <div class="container" data-aos="fade-up">
                 <div class="section-title">
                     <h2 class="mx-auto justify-content-center">Exhibitions</h2>
@@ -106,7 +158,7 @@
             <div class="container" data-aos="fade-up">
                 <div class="row">
                     <div class="col-lg-12 col-sm-12 col-md-12 pt-4 pt-lg-0 content">
-                        <p style="font-size: 15px !important; line-height: 1.5 !important; padding-left: 0 !important; maring-left: 0 !important; padding-top: 5em !important;">
+                        <p style="font-size: 15px !important; line-height: 1.5 !important; padding-left: 0 !important; maring-left: 0 !important; padding-top: 2em !important;">
                             {!! $artist->exhibitions !!}
                         </p>
                     </div>
@@ -129,9 +181,12 @@
                             <div class="col-lg-4 col-sm-6 col-md-12 pt-4 pt-lg-0 content">
                                 <div class="card">
                                     <div class="card-body">
-                                        <img src="{{$pr->image}}" alt="{{$pr->title}}"/ width="50px">
+                                        <img src="{{$pr->image}}" alt="{{$pr->title}}" style="max-width: 100% !important;"/>
                                         <h5 class="pt-4">{{$pr->title}}</h5>
-                                        {{-- <p> --}}
+                                        <p class="pt-2" style="height: 100px !important; overflow-y: scroll !important;">{{$pr->description}}</p>
+                                    </div>
+                                    <div class="card-footer text-right mr-0">
+                                        <a href="{{$pr->url}}" class="mr-0">See All</a>
                                     </div>
                                 </div>
                             </div>

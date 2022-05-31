@@ -13,8 +13,10 @@
             </li>
             <li><a href="#exhibitions" class="nav-link scrollto"><i class="bx bx-book-content"></i>
                     <span>Exhibitions</span></a></li>
-            <!--<li><a href="#exhibitions" class="nav-link scrollto"><i class="bx bx-book-content"></i>-->
-            <!--        <span>News</span></a></li>-->
+            <li><a href="#news" class="nav-link scrollto"><i class="bx bx-book-content"></i>
+                    <span>News / Events</span></a></li>
+            <li><a href="#links" class="nav-link scrollto"><i class='bx bx-link' ></i>
+                    <span>Links</span></a></li>
             <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a>
             </li>
         </ul>
