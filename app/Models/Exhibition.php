@@ -28,4 +28,9 @@ class Exhibition extends Model
     {
         return $this->hasMany(Artwork::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

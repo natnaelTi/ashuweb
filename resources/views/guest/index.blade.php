@@ -1,271 +1,211 @@
 @extends('layouts.guest')
 @section('content')
-    <!-- ======= Hero Section ======= -->
-    <section id="hero" class="d-flex flex-column justify-content-center" style="">
-        <div class="container" data-aos="zoom-in" data-aos-delay="100">
-            <h1>{{ $artist->name }}</h1>
-            <p style="color: #bd1220 !important;">visual artist.</p>
-            <div class="social-links">
-                <a href="https://twitter.com/ashumestika" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="https://www.facebook.com/AshenafeMestikaArt/" class="facebook"><i
-                        class="bx bxl-facebook"></i></a>
-                <a href="https://www.instagram.com/ashenafimestika/?hl=en" class="instagram"><i
-                        class="bx bxl-instagram"></i></a>
-                <a href="https://www.behance.net/ashumestika/appreciated" class="behance"><i
-                        class="bx bxl-behance"></i></a>
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>My Works</h2>
+                <p>Gallery</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 d-flex justify-content-center">
+                    <ul id="portfolio-flters">
+                        <li data-filter="*" class="filter-active">All</li>
+                        <li data-filter=".filter-wc">Woodcut Prints</li>
+                        <li data-filter=".filter-sp">Screen Prints</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row portfolio-container">
+                {{-- {{dd($drawings)}} --}}
+                @foreach ($artworks as $artwork)
+                    <a href="{{ asset('/artworks/') }}/{{ $artwork->filepath }}" data-gallery="portfolioGallery"
+                        class="portfolio-lightbox" data-title="Hidden Interaction #01"
+                        data-description='{!! $artwork->description !!}'
+                        data-desc-position="right" data-type="image" data-effect="fade" data-height="auto"
+                        data-zoomable="true" data-draggable="true">
+                        <div class="col-lg-4 col-md-6 portfolio-item {{ $artwork->type }}">
+                            <div class="portfolio-wrap">
+                                <img src="{{ asset('/artworks/') }}/{{ $artwork->filepath }}"
+                                    class="img-fluid portfolio-img" alt="">
+                                <div class="portfolio-info">
+                                    <h4>{{ $artwork->title }}</h4>
+                                    <p>{{ $artwork->type }}</p>
+                                    <small
+                                        style="font-family: 'Courier New', Courier, monospace !important;">{{ $artwork->medium }}
+                                        - {{ $artwork->width }}CM x {{ $artwork->height }}CM</small>
+                                    <div class="portfolio-links">
+                                        <a href="{{ asset('/artworks/') }}/{{ $artwork->filepath }}"
+                                            data-gallery="portfolioGallery" class="portfolio-lightbox"
+                                            data-title="Hidden Interaction #01"
+                                            data-description='{!! $artwork->description !!}'
+                                            data-desc-position="right" data-type="image" data-effect="fade"
+                                            data-height="auto" data-zoomable="true" data-draggable="true">
+                                            <i class="bx bx-plus"></i>
+                                        </a>
+                                        <!-- <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                @endforeach
             </div>
         </div>
-    </section>
-    <!-- End Hero -->
+    </section><!-- End Portfolio Section -->
 
-    <main id="main">
-        <!-- ======= About Section ======= -->
-        <section id="about" class="about" style="height: auto !important; width: 100% !important; position: relative !important;">
-            <div class="container" data-aos="fade-up">
-                <div class="section-title">
-                    <h2>About</h2>
-                </div>
-                
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+
+        <!-- ======= About Me ======= -->
+        <div class="about-me container">
+
+            <div class="section-title">
+                <h2>About</h2>
                 <div class="row">
-                    <div class="col-lg-12 col-sm-12 col-md-12 pt-4 pt-lg-0 content">
-                        <p style="font-size: 15px !important; line-height: 1.5 !important; padding-left: 0 !important; maring-left: 0 !important; padding-top: 2em !important;">
-                            {!! $artist->bio !!}
-                        </p>
+                    <div class="col-md-6 col-sm-12">
+                        <p>Short Bio ... </p>
                     </div>
-                    
-                    <div class="col-lg-12 col-sm-12 col-md-12 pt-4 pt-lg-0 content">
-                        <p style="font-size: 15px !important; line-height: 1.5 !important; padding-left: 0 !important; maring-left: 0 !important; padding-top: 1em !important;">
-                            {!! $artist->statement !!}
-                        </p>
+                    <div class="col-md-2 offset-md-3">
+                        <span style="margin-right: 0 !important;">
+                            <a class="inline btn btn-outline-secondary btn-sm" type="button"
+                                href="assets/img/resume/birhanu.manaye.resume.pdf" target="_blank">Download PDF</a>
+                        </span>
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- End About Section -->
-        
-        <!-- ======= Portfolio Section ======= -->
-        <section id="portfolio" class="portfolio section-bg">
-            <div class="container" data-aos="fade-up">
 
-                <div class="section-title">
-                    <h2>Gallery</h2>
+            <div class="row">
+                <div class="col-lg-4" data-aos="fade-right">
+                    <img src="{{ asset('/artists/') }}/{{ $artist->filepath }}" class="img-fluid" alt="">
                 </div>
+                <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
+                    <p class="">
+                        {!! $artist->bio !!}
+                    </p>
 
-                <div class="row">
-                    <div class="col-lg-12 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
-                        <div class="tabs">
-                            <input type="radio" id="drawings" name="tab-control" checked>
-                            <input type="radio" id="paintings" name="tab-control">
-                            <input type="radio" id="photography" name="tab-control">
-                            <input type="radio" id="videography" name="tab-control">
-                            <ul>
-                                <li title="Drawings"><label for="drawings" role="button"><i class='bx bx-pencil'></i><br><span>Drawings</span></label></li>
-                                <li title="Paintings"><label for="paintings" role="button"><i class='bx bx-palette'></i><br><span>Paintings</span></label></li>
-                                <li title="Photography"><label for="photography" role="button"><i class='bx bx-camera'></i><br><span>Photography</span></label></li>
-                                <li title="Videography"><label for="videography" role="button"><i class='bx bx-film'></i><br><span>Videography</span></label></li>
+                    <div class="row mt-5">
+                        <div class="col-md-6 col-sm-12">
+                            <p style="font-weight: 700 !important;">WORKSHOPS</p>
+                            <ul style="font-style: italic; font-size: small !important;">
+                                @foreach ($workshops as $workshop)
+                                    <li>“{{ $workshop->title }}” - {{ $workshop->location }}. -
+                                        {{ Carbon\Carbon::parse($workshop->end_date)->format('Y') }}
+                                    </li>
+                                @endforeach
                             </ul>
-                        
-                            <div class="slider">
-                                <div class="indicator"></div>
-                            </div>
-                            <div class="content">
-                                <section>
-                                    @foreach($drawing_years as $year)
-                                        <div class="row my-5 mx-4" data-aos="fade-up" data-aos-delay="200">
-                                            <h3 style="font-weight: lighter !important;">
-                                                {{ $year }}
-                                            </h3>
-                                        </div>
-                                        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-                                            @foreach($drawings as $artwork)
-                                                @if($artwork->year == $year)
-                                                    <div class="col-lg-4 col-md-6 portfolio-item" id="{{$artwork->type}}">
-                                                        <div class="portfolio-wrap">
-                                                            <img src="{{ asset('/artworks/') }}/{{ $artwork->filepath }}" class="img-fluid"
-                                                                alt="">
-                                                            <div class="portfolio-info">
-                                                                <h4>{{ $artwork->title }}</h4>
-                                                                <p>{{ $artwork->type }}</p>
-                                                                <div class="portfolio-links">
-                                                                    <a href="{{ asset('/artworks/') }}/{{ $artwork->filepath }}"
-                                                                        data-gallery="portfolioGallery" class="portfolio-lightbox"><i
-                                                                            class="bx bi-eye"></i></a>
-                                                                    <small style="display: block !important; font-size: 10px !important; text-align: center !important; font-weight: 300 !important;">{{ $artwork->medium }}</small>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                            @endforeach
-                                        </div>
-                                    @endforeach
-                                </section>
-                                
-                                <section>
-                                    @foreach($painting_years as $year)
-                                        <div class="row my-5 mx-4" data-aos="fade-up" data-aos-delay="200">
-                                            <h3 style="font-weight: lighter !important;">
-                                                {{ $year }}
-                                            </h3>
-                                        </div>
-                                        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-                                            @foreach($paintings as $artwork)
-                                                @if($artwork->year == $year)
-                                                    <div class="col-lg-4 col-md-6 portfolio-item" id="{{$artwork->type}}">
-                                                        <div class="portfolio-wrap">
-                                                            <img src="{{ asset('/artworks/') }}/{{ $artwork->filepath }}" class="img-fluid"
-                                                                alt="">
-                                                            <div class="portfolio-info">
-                                                                <h4>{{ $artwork->title }}</h4>
-                                                                <p>{{ $artwork->type }}</p>
-                                                                <div class="portfolio-links">
-                                                                    <a href="{{ asset('/artworks/') }}/{{ $artwork->filepath }}"
-                                                                        data-gallery="portfolioGallery" class="portfolio-lightbox"><i
-                                                                            class="bx bi-eye"></i></a>
-                                                                                                            <small style="display: block !important; font-size: 10px !important; text-align: center !important; font-weight: 300 !important;">{{ $artwork->medium }}</small>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                            @endforeach
-                                        </div>
-                                    @endforeach
-                                </section>
-                                
-                                <section>
-                                    
-                                </section>
-                                
-                                <section>
-                                    
-                                </section>
-                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <p style="font-weight: 700 !important;">GROUP EXHIBITIONS</p>
+                            <ul style="font-style: italic; font-size: small !important;">
+                                @foreach ($exhibitions as $exhibition)
+                                    <li>“{{ $exhibition->title }}” - {{ $exhibition->location }}. -
+                                        {{ Carbon\Carbon::parse($exhibition->end_date)->format('Y') }}
+                                        ({{ $exhibition->type }})</li>
+                                @endforeach
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- End Portfolio Section -->
+        </div>
 
-        <!-- ======= Exhibition Section ======= -->
-        <section id="exhibitions" style="height: auto !important; width: 100% !important; position: relative !important;">
-            <div class="container" data-aos="fade-up">
-                <div class="section-title">
-                    <h2 class="mx-auto justify-content-center">Exhibitions</h2>
+        </div><!-- End About Me -->
+    </section><!-- End About Section -->
+
+    <!-- ======= Resume Section ======= -->
+    <section id="resume" class="resume">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Events and Shows</h2>
+                <p>Upcoming Events</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="text-center">Please signup to my newsletter or check back later to get updates.</p>
                 </div>
             </div>
-            <div class="container" data-aos="fade-up">
-                <div class="row">
-                    <div class="col-lg-12 col-sm-12 col-md-12 pt-4 pt-lg-0 content">
-                        <p style="font-size: 15px !important; line-height: 1.5 !important; padding-left: 0 !important; maring-left: 0 !important; padding-top: 2em !important;">
-                            {!! $artist->exhibitions !!}
-                        </p>
-                    </div>
-                </div>
+        </div>
+    </section><!-- End Resume Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Contact</h2>
+                <p>Contact Me</p>
             </div>
-        </section>
-        <!-- End Exhibition Section -->
 
-        <!-- ======= Links Section ======= -->
-        <section id="links" style="height: 100vh !important; width: 100% !important; position: relative !important;">
-            <div class="container" data-aos="fade-up">
-                <div class="section-title">
-                    <h2 class="mx-auto justify-content-center">Links</h2>
-                </div>
-            </div>
-            <div class="container" data-aos="fade-up">
-                <div class="row">
-                    @if (count($prs) > 0)
-                        @foreach ($prs as $pr)
-                            <div class="col-lg-4 col-sm-6 col-md-12 pt-4 pt-lg-0 content">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <img src="{{$pr->image}}" alt="{{$pr->title}}" style="max-width: 100% !important;"/>
-                                        <h5 class="pt-4">{{$pr->title}}</h5>
-                                        <p class="pt-2" style="height: 100px !important; overflow-y: scroll !important;">{{$pr->description}}</p>
-                                    </div>
-                                    <div class="card-footer text-right mr-0">
-                                        <a href="{{$pr->url}}" class="mr-0">See All</a>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    @endif
-                </div>
-            </div>
-        </section>
-        <!-- End Exhibition Section -->
-
-        <!-- ======= Contact Section ======= -->
-        <section id="contact" class="contact" style="height: 100vh !important; width: 100% !important; position: relative !important;">
-            <div class="container" data-aos="fade-up">
-
-                <div class="section-title">
-                    <h2>Contact</h2>
-                </div>
-
-                <div class="row mt-1">
-
-                    <div class="col-lg-4">
-                        <div class="info">
-                            <div class="address">
-                                <i class="bi bi-geo-alt"></i>
-                                <h4>Location:</h4>
-                                <p>Addis Ababa, Ethiopia</p>
-                            </div>
-
-                            <div class="email">
-                                <i class="bi bi-envelope"></i>
-                                <h4>Email:</h4>
-                                <p>ashenafemestikaart@gmail.com / contact@ashenafemestika@gmail.com</p>
-                            </div>
-
-                            <div class="phone">
-                                <i class="bi bi-phone"></i>
-                                <h4>Call:</h4>
-                                <p>+251 984 742 585</p>
-                            </div>
-
+            <div class="row mt-2">
+                <div class="col-md-12 mt-4 mt-md-0 d-flex align-items-stretch">
+                    <div class="info-box">
+                        <i class="bx bx-share-alt"></i>
+                        <h3>Social Profiles</h3>
+                        <div class="social-links">
+                            <a href="https://instagram.com/birhanu_manaye?igshid=YmMyMTA2M2Y=" class="instagram"><i
+                                    class="bi bi-instagram"></i></a>
+                            <a href="https://www.facebook.com/profile.php?id=100008771567696&mibextid=LQQJ4d"
+                                class="facebook"><i class="bi bi-facebook"></i></a>
+                            <a href="https://twitter.com/ManayeBirhanu" class="twitter"><i class="bi bi-twitter"></i></a>
+                            <a href="https://www.behance.net/birhanumanaye1" class="linkedin"><i
+                                    class="bi bi-behance"></i></a>
                         </div>
-
                     </div>
-
-                    <div class="col-lg-8 mt-5 mt-lg-0">
-
-                        <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-                            <div class="row">
-                                <div class="col-md-6 form-group">
-                                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
-                                        required>
-                                </div>
-                                <div class="col-md-6 form-group mt-3 mt-md-0">
-                                    <input type="email" class="form-control" name="email" id="email"
-                                        placeholder="Your Email" required>
-                                </div>
-                            </div>
-                            <div class="form-group mt-3">
-                                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
-                                    required>
-                            </div>
-                            <div class="form-group mt-3">
-                                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-                            </div>
-                            <div class="my-3">
-                                <div class="loading">Loading</div>
-                                <div class="error-message"></div>
-                                <div class="sent-message">Your message has been sent. Thank you!</div>
-                            </div>
-                            <div class="text-center"><button type="submit">Send Message</button></div>
-                        </form>
-
-                    </div>
-
                 </div>
 
+                <div class="col-md-6 mt-4 d-flex align-items-stretch">
+                    <div class="info-box">
+                        <i class="bx bx-envelope"></i>
+                        <h3>Email Me</h3>
+                        <p><a href="mailto:birhanumanayementer@gmail.com"
+                                style="text-decoration: none !important;">birhanumanayementer@gmail.com</a></p>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-4 d-flex align-items-stretch">
+                    <div class="info-box">
+                        <i class="bx bx-phone-call"></i>
+                        <h3>Call Me</h3>
+                        <p><a href="tel:+251922871100" style="text-decoration: none !important;">+251 92 287 1100</a></p>
+                    </div>
+                </div>
             </div>
-        </section>
-        <!-- End Contact Section -->
 
-    </main><!-- End #main -->
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <input type="text" name="name" class="form-control" id="name"
+                            placeholder="Your Name" required>
+                    </div>
+                    <div class="col-md-6 form-group mt-3 mt-md-0">
+                        <input type="email" class="form-control" name="email" id="email"
+                            placeholder="Your Email" required>
+                    </div>
+                </div>
+                <div class="form-group mt-3">
+                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
+                        required>
+                </div>
+                <div class="form-group mt-3">
+                    <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                </div>
+                <div class="my-3">
+                    <div class="loading">Loading</div>
+                    <div class="error-message"></div>
+                    <div class="sent-message">Your message has been sent. Thank you!</div>
+                </div>
+                <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+
+        </div>
+    </section><!-- End Contact Section -->
+
+    <div class="credits">
+        Made by <a href="https://hsm.earaldtradinget.com/">Habesha Selfmade</a>
+    </div>
 @endsection

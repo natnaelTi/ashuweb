@@ -99,9 +99,9 @@
                                       <th>Title</th>
                                       <th>Year</th>
                                       <th>Type</th>
-                                      <th>Status</th>
+                                      {{-- <th>Status</th> --}}
                                       <th>Statement</th>
-                                      <th>Description</th>
+                                      <th>Location</th>
                                       <th>Installation Views</th>
                                       <th>--</th>
                                     </tr>
@@ -111,21 +111,21 @@
                                         @foreach($exhibitions as $exhibition)
                                             <tr>
                                                 <td>{{ $exhibition->title }}</td>
-                                                <td> 2022
-                                                    {{-- {{ \Carbon\Carbon::parse($exhibition->end_date)->format('Y M d') }} --}}
+                                                <td>
+                                                    {{ Carbon\Carbon::parse($exhibition->end_date)->format('Y') }}
                                                 </td>
                                                 <td>{{ $exhibition->type }}</td>
-                                                {{-- @if(\Carbon\Carbon::createFromFormat('Y-M-d', $exhibition->end_date)->isPast()) --}}
+                                                {{-- @if(Carbon\Carbon::createFromFormat('d/m/Y', $exhibition->end_date)->isPast())
                                                     <td>Ended</td>
-                                                {{-- @endif --}}
-                                                {{-- @if(\Carbon\Carbon::createFromFormat('Y-M-d', $exhibition->start_date)->isPast() && \Carbon\Carbon::createFromFormat('Y-M-d', $exhibition->end_date)->isFuture()) --}}
-                                                    {{-- <td style="color: green !important;">Ongoing</td> --}}
-                                                {{-- @endif --}}
-                                                {{-- @if(\Carbon\Carbon::createFromFormat('Y-M-d', $exhibition->start_date)->isFuture()) --}}
-                                                    {{-- <td>Upcoming</td> --}}
-                                                {{-- @endif --}}
-                                                <td>Some...</td>
-                                                <td>Some...</td>
+                                                @endif
+                                                @if(Carbon\Carbon::createFromFormat('d/m/Y', $exhibition->start_date)->isPast() && \Carbon\Carbon::createFromFormat('Y-M-d', $exhibition->end_date)->isFuture())
+                                                    <td style="color: green !important;">Ongoing</td>
+                                                @endif
+                                                @if(Carbon\Carbon::createFromFormat('d/m/Y', $exhibition->start_date)->isFuture())
+                                                    <td>Upcoming</td>
+                                                @endif --}}
+                                                <td>{{ $exhibition->statement }}</td>
+                                                <td>{{ $exhibition->location }}</td>
                                                 <td>none</td>
                                                 <td>
                                                     <a href="{{ route('edit_exhibition', $exhibition->id) }}" class="btn btn-warning">Edit</a>
@@ -139,6 +139,68 @@
                                     @endif
                                     <tr>
                                         <a class="btn btn-primary" href="{{ route('add_exhibition') }}">Add Exhibition</a>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="my-4">Workshops</h4>
+                </div>
+                <div class="card-body cms-profile-exhibition">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <table summary="This table shows the artist's current and previous exhibitions in tabular details." class="table table-borderless table-hover dt-responsive">
+                                <caption class="text-center">Ongoing workshops are highlighted <span style="color: green !important;">green</span></caption>
+                                <thead>
+                                    <tr>
+                                      <th>Title</th>
+                                      <th>Year</th>
+                                      <th>Location</th>
+                                      {{-- <th>Status</th> --}}
+                                      <th>Description</th>
+                                      <th>External Links</th>
+                                      <th>--</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if(count($workshops) > 0)
+                                        @foreach($workshops as $workshop)
+                                            <tr>
+                                                <td>{{ $workshop->title }}</td>
+                                                <td>
+                                                    {{ Carbon\Carbon::parse($workshop->end_date)->format('Y') }}
+                                                </td>
+                                                <td>{{ $workshop->location }}</td>
+                                                {{-- @if(Carbon\Carbon::createFromFormat('d/m/Y', $workshop->end_date)->isPast())
+                                                    <td>Ended</td>
+                                                @endif
+                                                @if(Carbon\Carbon::createFromFormat('d/m/Y', $workshop->start_date)->isPast() && \Carbon\Carbon::createFromFormat('Y-M-d', $workshop->end_date)->isFuture())
+                                                    <td style="color: green !important;">Ongoing</td>
+                                                @endif
+                                                @if(Carbon\Carbon::createFromFormat('d/m/Y', $workshop->start_date)->isFuture())
+                                                    <td>Upcoming</td>
+                                                @endif --}}
+                                                <td>{{ $workshop->description }}</td>
+                                                <td>{{ $workshop->link }}</td>
+                                                <td>
+                                                    <a href="{{ route('edit_workshop', $workshop->id) }}" class="btn btn-warning">Edit</a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @else
+                                        <tr>
+                                            <p class="text-center">No workshops have been recorded yet.</p>
+                                        </tr>
+                                    @endif
+                                    <tr>
+                                        <a class="btn btn-primary" href="{{ route('add_workshop') }}">Add Workshop</a>
                                     </tr>
                                 </tbody>
                             </table>

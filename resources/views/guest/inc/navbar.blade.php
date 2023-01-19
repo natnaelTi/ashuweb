@@ -1,25 +1,31 @@
-<!-- ======= Mobile nav toggle button ======= -->
-<!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
-<i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
 <!-- ======= Header ======= -->
-<header id="header" class="d-flex flex-column justify-content-center">
+<header id="header">
+    <div class="container">
 
-    <nav id="navbar" class="navbar nav-menu">
+      <h1><a href="index.html">{{ $artist->name }}</a></h1>
+      
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> -->
+      
+      <h2>A <span>visual artist</span> from <span>Ethiopia</span></h2>
+
+      <nav id="navbar" class="navbar">
         <ul>
-            <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
-            <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
-            <!-- <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>My Resume</span></a></li> -->
-            <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Gallery</span></a>
-            </li>
-            <li><a href="#exhibitions" class="nav-link scrollto"><i class="bx bx-book-content"></i>
-                    <span>Exhibitions</span></a></li>
-            <li><a href="#news" class="nav-link scrollto"><i class="bx bx-book-content"></i>
-                    <span>News / Events</span></a></li>
-            <li><a href="#links" class="nav-link scrollto"><i class='bx bx-link' ></i>
-                    <span>Links</span></a></li>
-            <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a>
-            </li>
+          <li><a class="nav-link active" href="#header">Home</a></li>
+          <li><a class="nav-link" href="#portfolio">Gallery</a></li>
+          <li><a class="nav-link" href="#about">About Me</a></li>
+          <li><a class="nav-link" href="#resume">News and Events</a></li>
+          <li><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
-    </nav><!-- .nav-menu -->
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
 
-</header><!-- End Header -->
+      <div class="social-links">
+        <a href="https://instagram.com/birhanu_manaye?igshid=YmMyMTA2M2Y=" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=100008771567696&mibextid=LQQJ4d" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.behance.net/birhanumanaye1" class="linkedin"><i class="bi bi-behance"></i></a>
+        <a href="https://twitter.com/ManayeBirhanu" class="twitter"><i class="bi bi-twitter"></i></a>
+      </div>
+
+    </div>
+  </header><!-- End Header -->

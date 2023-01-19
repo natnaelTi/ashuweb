@@ -36,11 +36,11 @@
                     <div class="card cms-info-cards cms-ic-photos" id="cms-ic-photos" style="background-image: linear-gradient(to bottom, rgba(77, 90, 153, 0.76), rgba(43, 10, 15, 0.89)), url('./images/card-painting.jpg') !important;">
                         <div class="card-body">
                             <h3 class="text-right mt-0 pt-0"><i class="pe-7s-camera"></i></h3>
-                            <h1>{{ $total_photos }}</h1>
-                            <h4 class="text-white ml-2">Photos Showcased</h4>
+                            <h1>{{ $total_workshops }}</h1>
+                            <h4 class="text-white ml-2">Workshops Completed</h4>
                         </div>
                         <div class="card-footer">
-                            <a href="{{ route('add_photo') }}">add photograph</a>
+                            <a href="{{ route('add_workshop') }}">add workshop</a>
                         </div>
                     </div>
                 </div>

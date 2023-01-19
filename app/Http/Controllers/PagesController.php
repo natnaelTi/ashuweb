@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Alumni;
 use App\Models\Exhibition;
+use App\Models\Event;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Artwork;
+use App\Models\Workshop;
 use Embed\Embed;
 
 class PagesController extends Controller
@@ -15,8 +17,9 @@ class PagesController extends Controller
     //
     public function index()
     {
-        $artworks = Artwork::orderBy('year', 'desc')->get();
+        $artworks = Artwork::orderBy('created_at', 'desc')->get();
         $exhibitions = Exhibition::all();
+        $workshops = Workshop::all();
         $artist = User::find(1);
         $years = [];
         $artwork_displays = [];
@@ -73,6 +76,7 @@ class PagesController extends Controller
         return view('guest.index', [
             'artworks' => $artworks,
             'exhibitions' => $exhibitions,
+            'workshops' => $workshops,
             'artist' => $artist,
             'years' => $years,
             'upcoming' => $upcoming,
@@ -87,9 +91,12 @@ class PagesController extends Controller
     public function dashboard()
     {
         $artist = User::find(1);
-        $total_artworks = 0;
-        $total_photos = 0;
-        $total_exhibitions = 0;
+        $artworks = Artwork::all();
+        $total_artworks = count($artworks);
+        $workshops = Workshop::all();
+        $total_workshops = count($workshops);
+        $exhibitions = Exhibition::all();
+        $total_exhibitions = count($exhibitions);
         $profile_pic_path = asset('./artists/'.$artist->filepath);
         $age = Carbon::parse($artist->dob)->age;
         $alumni = ['Ale School of Fine Arts | AAU', 'Hamburg Fine Arts Fellowship'];
@@ -97,7 +104,7 @@ class PagesController extends Controller
 
         return view('cms.dashboard', [
             'total_artworks' => $total_artworks,
-            'total_photos' => $total_photos,
+            'total_workshops' => $total_workshops,
             'total_exhibitions' => $total_exhibitions,
             'profile_pic_path' => $profile_pic_path,
             'artist' => $artist,
@@ -117,6 +124,7 @@ class PagesController extends Controller
         $alumnis = Alumni::all();
 
         $exhibitions = Exhibition::latest()->paginate(5);
+        $workshops = Workshop::latest()->paginate(5);
 
         return view('cms.profile.view', [
             'artist' => $artist,
@@ -124,7 +132,8 @@ class PagesController extends Controller
             'profile_pic_path' => $profile_pic_path,
             'alumnis' => $alumnis,
             'year' => $year,
-            'exhibitions' => $exhibitions
+            'exhibitions' => $exhibitions,
+            'workshops' => $workshops
         ]);
     }
 

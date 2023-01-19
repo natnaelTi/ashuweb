@@ -77,6 +77,22 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <label for="filepath">Background</label>
+                                    <label class="btn btn-secondary" for="filepath">
+                                        <span class="my-2">Upload Website Background Image</span>
+                                        <input type="file" class="hidden form-control" id="bg" name="bg"/>
+                                    </label>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <label for="filepath">Mobile Background</label>
+                                    <label class="btn btn-secondary" for="filepath">
+                                        <span class="my-2">Upload Website Background Image for Mobile Viewing</span>
+                                        <input type="file" class="hidden form-control" id="mobile_bg" name="mobile_bg"/>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-xs-12">
                                     <button class="btn btn-primary" type="submit">Save</button>
                                 </div>

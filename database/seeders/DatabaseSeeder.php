@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ExhibitionSeeder::class,
             ArtworkSeeder::class,
-            AlumniSeeder::class
+            AlumniSeeder::class,
+            WorkshopSeeder::class
         ]);
     }
 }

@@ -79,6 +79,8 @@
                                     <select class="form-control" id="type" name="type" selected="{{ old('type') ?? $artwork['type'] ?? '' }}">
                                         <option value="drawing">Drawing</option>
                                         <option value="painting">Painting</option>
+                                        <option value="screenprint">Screenprint</option>
+                                        <option value="woodcut">Woodcut</option>
                                     </select>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-12">

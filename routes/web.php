@@ -6,6 +6,8 @@ use App\Http\Controllers\ExhibitionController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AlumniController;
+use App\Http\Controllers\WorkshopController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,6 +60,12 @@ Route::post('/store_exhibition', [ExhibitionController::class, 'store'])->middle
 Route::get('/edit_exhibition/{id}', [ExhibitionController::class, 'edit'])->middleware('auth')->name('edit_exhibition');
 Route::post('/update_exhibition/{id}', [ExhibitionController::class, 'update'])->middleware('auth')->name('update_exhibition');
 Route::post('/delete_exhibition/{id}', [ExhibitionController::class, 'destroy'])->middleware('auth')->name('delete_exhibition');
+
+Route::get('/add_workshop', [WorkshopController::class, 'create'])->middleware('auth')->name('add_workshop');
+Route::post('/store_workshop', [WorkshopController::class, 'store'])->middleware('auth')->name('store_workshop');
+Route::get('/edit_workshop/{id}', [WorkshopController::class, 'edit'])->middleware('auth')->name('edit_workshop');
+Route::post('/update_workshop/{id}', [WorkshopController::class, 'update'])->middleware('auth')->name('update_workshop');
+Route::post('/delete_workshop/{id}', [WorkshopController::class, 'destroy'])->middleware('auth')->name('delete_workshop');
 
 Route::get('/add_videoart', [VideoartController::class, 'create'])->middleware('auth')->name('add_video');
 Route::post('/store_videoart', [VideoartController::class, 'store'])->middleware('auth')->name('store_video');

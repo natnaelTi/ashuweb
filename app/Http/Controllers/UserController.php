@@ -34,6 +34,16 @@ class UserController extends Controller
             $request->filepath->move(public_path('artists'), $fp);
         }
 
+        if($request->has('bg')) {
+            $bg = $request['name'] . '.' . 'bg' . '.' . time() . '.' . $request->filepath->extension();
+            $request->filepath->move(public_path('bg'), $fp);
+        }
+
+        if($request->has('mobile_bg')) {
+            $mbg = $request['name'] . '.' . 'mobile_bg' . '.' . time() . '.' . $request->filepath->extension();
+            $request->filepath->move(public_path('bg'), $fp);
+        }
+
         $artist = User::find($id);
         $artist->name = $request->input('name');
         $artist->bio = $request->input('bio');
@@ -58,6 +68,15 @@ class UserController extends Controller
         if($request->has('filepath')) {
             $artist->filepath = $fp;
         }
+
+        if($request->has('bg')) {
+            $artist->bg = $bg;
+        }
+
+        if($request->has('mobile_bg')) {
+            $artist->mobile_bg = $mbg;
+        }
+
         $stat = $artist->update();
 
         if($stat) {

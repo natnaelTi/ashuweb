@@ -25,6 +25,8 @@ class CreateUsersTable extends Migration
             $table->longText('exhibitions');
             $table->string('prs')->nullable()->default('none');
             $table->string('filepath');
+            $table->string('bg');
+            $table->string('mobile_bg');
             $table->rememberToken();
             $table->timestamps();
         });

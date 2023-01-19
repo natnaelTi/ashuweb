@@ -16,8 +16,8 @@ class AlumniSeeder extends Seeder
     {
         //
         Alumni::create([
-            'organisation' => 'Ale School of Fine Arts | AAU',
-            'year' => 2016,
+            'organisation' => 'Alle School of Fine Arts and Design | AAU',
+            'year' => 2022,
             'location' => 'Addis Ababa, Ethiopia',
             'user_id' => 1
         ]);

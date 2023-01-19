@@ -19,7 +19,7 @@ class CreateArtworksTable extends Migration
             $table->string('title');
             $table->string('width');
             $table->string('height');
-            $table->enum('type', ['painting', 'drawing']);
+            $table->enum('type', ['painting', 'drawing', 'screenprint', 'woodcut']);
             $table->string('medium');
             $table->string('year');
             $table->float('price');
